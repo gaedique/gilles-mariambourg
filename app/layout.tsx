@@ -38,16 +38,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="fr" className="h-full">
+    <html lang="fr" className="h-full scroll-smooth">
       <body
         className={cn(
           headingFont.variable,
           bodyFont.variable,
           accentFont.variable,
-          "min-h-full, max-w-screen-2xl, bg-gray-50, font-body"
+          "min-h-full text-gray-900 overflow-x-hidden font-body"
         )}
       >
-        {children}
+        <div className="max-w-[1440px] w-full">{children}</div>
       </body>
     </html>
   );

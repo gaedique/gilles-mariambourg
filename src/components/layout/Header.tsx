@@ -8,13 +8,13 @@ const navLinkAnimation = clsx(
 
 export default function Header() {
   return (
-    <header className="flex justify-between items-center py-9 px-14 mx-auto">
+    <header className="fixed w-full flex justify-between items-center py-9 px-14 mx-auto bg-transparent z-50">
       <Link href="/" className="font-heading text-2xl font-bold">
         Dr.Mariambourg
       </Link>
       <nav>
         <ul
-          className="flex space-x-4 font-accent border-2 rounded-lg py-6 px-4
+          className="flex space-x-4 font-accent bg-white rounded-lg py-6 px-4
         "
         >
           <li className="pl-4">
