@@ -18,6 +18,8 @@ export default {
         background: "var(--background)",
         foreground: "var(--foreground)",
         "custom-blue": "#bg-blue-400",
+        "hero-top": "#F0F6FF",
+        "hero-bottom": "#C5D5EA",
       },
     },
   },

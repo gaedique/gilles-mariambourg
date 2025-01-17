@@ -1,11 +1,12 @@
-import Footer from "@/src/components/layout/Footer";
-import Header from "@/src/components/layout/Header";
+import HeroSection from "@/src/components/home/HeroSection";
+import Layout from "@/src/components/layout/Layout";
 
 export default function Home() {
   return (
     <>
-      <Header />
-      <Footer />
+      <Layout>
+        <HeroSection />
+      </Layout>
     </>
   );
 }
