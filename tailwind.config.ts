@@ -20,6 +20,23 @@ export default {
         "custom-blue": "#bg-blue-400",
         "hero-top": "#F0F6FF",
         "hero-bottom": "#C5D5EA",
+        "deep-blue": "#0056A4",
+        "deep-blue-hover": "#0068C5",
+        "deep-blue-light": "#E5F0F9",
+        "deep-blue-dark": "#004483",
+        "vert-bleu": "#00727D",
+        "bleu-roi": "#1034A6",
+      },
+
+      keyframes: {
+        "pulse-glow": {
+          "0%": { opacity: "0.6", transform: "scale(1)" },
+          "50%": { opacity: "0.8", transform: "scale(1.15)" },
+          "100%": { opacity: "0.6", transform: "scale(1)" },
+        },
+      },
+      animation: {
+        "pulse-glow": "pulse-glow 3s infinite ease-in-out",
       },
     },
   },

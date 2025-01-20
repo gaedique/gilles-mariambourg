@@ -1,28 +1,25 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Source_Sans_3, Lato } from "next/font/google";
+import { Syne, Inter, DM_Sans } from "next/font/google";
 
 import "@/src/styles/globals.css";
 
 import { cn } from "@/src/cn";
 
-const headingFont = Cormorant_Garamond({
+const headingFont = Syne({
   subsets: ["latin"],
-  weight: ["500", "600"],
-  display: "swap",
+  weight: ["400", "600", "700"],
   variable: "--font-heading",
 });
 
-const bodyFont = Source_Sans_3({
+const bodyFont = Inter({
   subsets: ["latin"],
   weight: ["400", "500"],
-  display: "swap",
   variable: "--font-body",
 });
 
-const accentFont = Lato({
+const accentFont = DM_Sans({
   subsets: ["latin"],
-  weight: ["400", "700"],
-  display: "swap",
+  weight: ["400", "500"],
   variable: "--font-accent",
 });
 
@@ -44,10 +41,12 @@ export default function RootLayout({
           headingFont.variable,
           bodyFont.variable,
           accentFont.variable,
-          "min-h-full text-gray-900 overflow-x-hidden font-body"
+          "min-h-full text-gray-900 font-body"
         )}
       >
-        <div className="max-w-[1440px] w-full">{children}</div>
+        {/* <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 overflow-x-hidden"> */}
+        {children}
+        {/* </div> */}
       </body>
     </html>
   );
