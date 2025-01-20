@@ -7,7 +7,7 @@ interface SectionProps {
 
 export function ColoredSection({ children, hasSvg = false }: SectionProps) {
   return (
-    <section className="relative w-screen h-screen bg-gradient-to-b from-hero-top to-hero-bottom">
+    <section className="relative w-full h-screen bg-gradient-to-b from-hero-top to-hero-bottom">
       {hasSvg && (
         <div className="absolute bottom-0 left-0 right-0 z-10">
           <Image
@@ -19,7 +19,7 @@ export function ColoredSection({ children, hasSvg = false }: SectionProps) {
           />
         </div>
       )}
-      <div className="mx-40 h-full flex flex-col justify-center z-20">
+      <div className="max-w-[1440px] flex flex-col justify-center mx-40 z-20">
         {children}
       </div>
     </section>

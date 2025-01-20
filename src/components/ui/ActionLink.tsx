@@ -1,77 +1,42 @@
 import { LucideIcon } from "lucide-react";
-import Link from "next/link";
+import React from "react";
 
 interface ActionLinkProps {
   href: string;
-  icon: LucideIcon;
+  icon?: LucideIcon;
   text: string;
   isExternal?: boolean;
   direction?: "left" | "right";
+  ariaProps?: React.AriaAttributes;
 }
 
 export function ActionLink({
   href,
-  icon: Icon,
+  icon: IconComponent,
   text,
   isExternal = false,
-  direction = "left",
+  ariaProps,
 }: ActionLinkProps) {
-  const sharedClasses =
-    "group relative flex items-center hover:text-blue-600 transition-colors duration-300";
+  const baseClasses =
+    "group relative flex items-center justify-center px-8 py-4 rounded-full font-bold uppercase tracking-widest transition-all duration-300";
+  const bgColor =
+    "backdrop-blur-sm bg-deep-blue/10 hover:bg-deep-blue/20 active:bg-deep-blue/30";
+  const textColor = "text-deep-blue hover:text-deep-blue-dark";
 
-  // Classes de base pour les lignes
-  const baseLineClasses = "absolute -bottom-2 h-0.5";
-
-  // Classes spécifiques selon la direction
-  const lineClasses = `${baseLineClasses} ${
-    direction === "left" ? "left-0" : "right-0"
-  } w-[200%] bg-slate-300`;
-
-  const hoverLineClasses = `${baseLineClasses} ${
-    direction === "left" ? "left-0 origin-left" : "right-0 origin-right"
-  } w-[200%] bg-blue-600 transform scale-x-0 transition-transform duration-300 group-hover:scale-x-100`;
-
-  const iconElement = <Icon size={16} />;
-  const textElement = (
-    <span
-      className={`uppercase tracking-widest ${
-        direction === "right" ? "mr-4" : "ml-4"
-      }`}
-    >
-      {text}
-    </span>
-  );
-
-  // Détermine l'ordre des éléments
-  const content =
-    direction === "left" ? (
-      <>
-        {iconElement}
-        {textElement}
-      </>
-    ) : (
-      <>
-        {textElement}
-        {iconElement}
-      </>
-    );
-
-  return isExternal ? (
-    <Link
+  return (
+    <a
       href={href}
-      target="_blank"
-      rel="noreferrer noopener"
-      className={sharedClasses}
+      className={`${baseClasses} ${bgColor} ${textColor}`}
+      {...(isExternal ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+      {...ariaProps}
     >
-      {content}
-      <div className={lineClasses} />
-      <div className={hoverLineClasses} />
-    </Link>
-  ) : (
-    <a href={href} className={sharedClasses}>
-      {content}
-      <div className={lineClasses}></div>
-      <div className={hoverLineClasses}></div>
+      {IconComponent && (
+        <IconComponent
+          className="mr-3 group-hover:scale-110 transition-transform duration-300"
+          size={20}
+        />
+      )}
+      <span className="text-sm tracking-wider">{text}</span>
     </a>
   );
 }
