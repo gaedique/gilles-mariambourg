@@ -1,13 +1,15 @@
-import HeroSection from "@/src/components/home/HeroSection";
-import SurgerySection from "@/src/components/home/SurgerySection";
+import About from "@/src/components/homePage/About";
+import Hero from "@/src/components/homePage/Hero";
 import Layout from "@/src/components/layout/Layout";
+import Surgery from "@/src/components/homePage/Surgery";
 
 export default function Home() {
   return (
     <>
       <Layout>
-        <HeroSection />
-        <SurgerySection />
+        <Hero />
+        <About />
+        <Surgery />
       </Layout>
     </>
   );
