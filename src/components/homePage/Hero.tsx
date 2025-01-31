@@ -103,23 +103,16 @@ const EnhancedHero = () => {
       </nav>
 
       {/* Main Content */}
-      <div className="pt-40 px-6">
+      <div className="pt-48 px-6">
         <div className="max-w-7xl mx-auto">
           {/* Text Content */}
           <div className="text-center mb-16">
-            <div className="overflow-hidden h-10 mb-8">
-              <div
-                className="transition-transform duration-500 ease-in-out"
-                style={{ transform: `translateY(-${currentIndex * 2.5}rem)` }}
-              >
-                {specialties.map((specialty, index) => (
-                  <h2
-                    key={index}
-                    className="text-2xl h-10 font-light bg-clip-text text-transparent bg-gradient-to-r from-teal-600 to-cyan-600"
-                  >
-                    {specialty.title}
-                  </h2>
-                ))}
+            {/* Specialty indicator */}
+            <div className="mb-12">
+              <div className="inline-block bg-white/80 backdrop-blur-sm px-6 py-2 rounded-full">
+                <p className="text-sm font-light">
+                  {specialties[currentIndex].title}
+                </p>
               </div>
             </div>
             <h1 className="text-7xl font-medium mb-8">Gilles Mariambourg</h1>
