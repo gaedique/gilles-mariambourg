@@ -1,261 +1,132 @@
 "use client";
+import Link from "next/link";
 import Image from "next/image";
-import React, { useState } from "react";
-import { ChevronDown, ArrowRight } from "lucide-react";
-import { WhiteSection } from "../ui/Sections";
+import { useState } from "react";
+import { ChevronDown } from "lucide-react";
 
-type SurgeryType = "rachis" | "hanche" | "genou" | "traumatologie";
-
-interface Point {
-  x: number;
-  y: number;
-  surgery: SurgeryType;
-}
-
-interface SurgeryInfo {
-  title: string;
-  description: string;
-  points: Point[];
-  color: string;
-  gradientFrom: string;
-  gradientTo: string;
-}
-
-const surgeryData: Record<SurgeryType, SurgeryInfo> = {
-  rachis: {
+const surgeryTypes = [
+  {
+    id: "rachis",
     title: "Chirurgie du rachis",
     description:
       "La chirurgie du dos traite les pathologies du rachis et de la colonne vertébrale, comme les hernies discales, le canal lombaire étroit, les déformations ou les instabilités, en visant à soulager les douleurs, restaurer la stabilité et améliorer la qualité de vie.",
     points: [
-      { x: 51, y: 25, surgery: "rachis" },
-      { x: 53, y: 32, surgery: "rachis" },
-      { x: 52, y: 40, surgery: "rachis" },
+      { top: "40%", left: "50%" },
+      { top: "55%", left: "48%" },
     ],
-    color: "#6B8FC0",
-    gradientFrom: "rgba(236, 242, 250, 0.7)",
-    gradientTo: "rgba(227, 236, 247, 0.5)",
   },
-  hanche: {
+  {
+    id: "hanche",
     title: "Prothèse de hanche",
     description:
       "La chirurgie de prothèse de hanche permet de remplacer l'articulation endommagée par une prothèse artificielle, réduisant la douleur et restaurant la mobilité pour une meilleure qualité de vie.",
-    points: [
-      { x: 41, y: 51, surgery: "hanche" },
-      { x: 58, y: 53, surgery: "hanche" },
-    ],
-    color: "#9B7FE6",
-    gradientFrom: "rgba(243, 240, 252, 0.7)",
-    gradientTo: "rgba(237, 233, 250, 0.5)",
+    points: [{ top: "70%", left: "40%" }],
   },
-  genou: {
+  {
+    id: "genou",
     title: "Prothèse du genou",
     description:
       "La chirurgie de prothèse du genou vise à remplacer l'articulation usée par une prothèse adaptée, permettant de retrouver une mobilité optimale et de supprimer les douleurs liées à l'arthrose.",
-    points: [{ x: 53, y: 67, surgery: "genou" }],
-    color: "#5B98B7",
-    gradientFrom: "rgba(237, 245, 250, 0.7)",
-    gradientTo: "rgba(229, 241, 247, 0.5)",
+    points: [{ top: "85%", left: "45%" }],
   },
-  traumatologie: {
+  {
+    id: "traumatologie",
     title: "Traumatologie",
     description:
       "La traumatologie traite les blessures et traumatismes de l'appareil locomoteur. Elle prend en charge les fractures, entorses, luxations et lésions musculaires ou tendineuses, en utilisant des techniques chirurgicales modernes pour une récupération optimale.",
-    points: [{ x: 45, y: 60, surgery: "traumatologie" }],
-    color: "#5BA894",
-    gradientFrom: "rgba(235, 247, 243, 0.7)",
-    gradientTo: "rgba(228, 244, 239, 0.5)",
+    points: [{ top: "30%", left: "45%" }],
   },
-};
+];
 
-export default function Surgery() {
-  const [selectedSurgery, setSelectedSurgery] = useState<SurgeryType>("rachis");
-  const [openAccordion, setOpenAccordion] = useState<SurgeryType | null>(
-    "rachis"
-  );
-  const activePoints = surgeryData[selectedSurgery].points;
+export default function SurgerySection() {
+  const [activeId, setActiveId] = useState(null);
 
-  const handleAccordionClick = (
-    type: SurgeryType,
-    isChevronClick: boolean = false
-  ) => {
-    if (isChevronClick) {
-      e.stopPropagation();
-    }
-    setSelectedSurgery(type);
-    setOpenAccordion(openAccordion === type ? null : type);
+  const toggleAccordion = (id) => {
+    setActiveId(activeId === id ? null : id);
   };
 
   return (
-    <WhiteSection>
-      <div className="container mx-auto px-4 lg:px-8">
-        {/* Top border */}
-        <div className="w-full h-px bg-gray-200 mb-16" />
-
-        {/* Main content */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* Info Container */}
-          <div className="flex flex-col h-[600px] relative">
-            <div className="flex items-center gap-3 mb-12">
-              <div className="relative">
-                <div
-                  className="w-3 h-3 rounded-full animate-pulse"
-                  style={{
-                    backgroundColor: surgeryData[selectedSurgery].color,
-                  }}
-                />
-                <div
-                  className="absolute -inset-1 rounded-full opacity-40 animate-ping"
-                  style={{
-                    backgroundColor: surgeryData[selectedSurgery].color,
-                  }}
-                />
-              </div>
-              <h3 className="text-sm uppercase tracking-wider text-gray-500">
-                À propos
-              </h3>
-            </div>
-
-            <h2 className="text-4xl font-bold mb-12">
-              Interventions pratiquées
+    <section className="w-full py-24 bg-white border-b border-gray-200">
+      <div className="max-w-7xl mx-auto px-6 ">
+        <div className="flex flex-col  justify-center mb-24 relative">
+          <div className="flex items-center gap-3 mb-8">
+            <div
+              className="w-3 h-3 bg-black rounded-3xl animate-pulse"
+              aria-hidden="true"
+            ></div>
+            <h2 className="text-xs uppercase tracking-wider text-gray-500">
+              Expertise
             </h2>
-
-            {/* Accordions */}
-            <div className="space-y-2 flex-grow">
-              {(Object.keys(surgeryData) as SurgeryType[]).map((type) => {
-                const isOpen = openAccordion === type;
-                const surgery = surgeryData[type];
-
-                return (
-                  <div
-                    key={type}
-                    onClick={() => handleAccordionClick(type)}
-                    className="overflow-hidden cursor-pointer"
+          </div>
+          <h3 className="text-xl text-gray-400 uppercase tracking-wide mt-2">
+            Interventions Pratiquées
+          </h3>
+        </div>
+        <div className="grid grid-cols-12 gap-24">
+          <div className="col-span-5 flex flex-col justify-center space-y-12 ">
+            <div className="border-t border-gray-200">
+              {surgeryTypes.map((surgery, index) => (
+                <div
+                  key={surgery.id}
+                  className="border-b border-gray-200 group relative"
+                >
+                  <button
+                    onClick={() => toggleAccordion(surgery.id)}
+                    className="flex justify-between items-center w-full p-4 text-left text-gray-900 hover:bg-gray-900 hover:text-white transition"
                   >
-                    <div
-                      className={`
-                        transition-all duration-300
-                        ${isOpen ? "bg-gradient-to-r" : "hover:bg-gray-50"}
-                      `}
-                      style={{
-                        backgroundImage: isOpen
-                          ? `linear-gradient(to right, ${surgery.gradientFrom}, ${surgery.gradientTo})`
-                          : undefined,
-                      }}
-                    >
-                      <div className="flex items-center p-4">
-                        <div
-                          className="w-2 h-2 bg-gray-300 rounded-full mr-4"
-                          style={{
-                            backgroundColor: isOpen ? surgery.color : undefined,
-                          }}
-                        />
-                        <h3
-                          className={`flex-1 text-lg transition-colors duration-300 
-                            ${isOpen ? "font-medium" : "text-gray-900"}
-                          `}
-                          style={{ color: isOpen ? surgery.color : undefined }}
-                        >
-                          {surgery.title}
-                        </h3>
-                        <ChevronDown
-                          className={`h-5 w-5 transform transition-transform duration-300 
-                            ${isOpen ? "rotate-180" : "text-gray-400"}
-                          `}
-                          style={{ color: isOpen ? surgery.color : undefined }}
-                        />
-                      </div>
-                      {isOpen && (
-                        <div className="px-10 py-4">
-                          <p className="text-gray-600 text-sm leading-relaxed">
-                            {surgery.description}
-                          </p>
-                        </div>
-                      )}
+                    <span className="text-base font-medium">
+                      {surgery.title}
+                    </span>
+                    <ChevronDown
+                      className={`transition-transform transform ${
+                        activeId === surgery.id ? "rotate-180" : "rotate-0"
+                      }`}
+                    />
+                  </button>
+
+                  {activeId === surgery.id && (
+                    <div className="p-4 bg-gray-50 text-gray-600 leading-relaxed relative">
+                      <div className="absolute inset-0 bg-gray-900 opacity-0 group-hover:opacity-10 transition-opacity duration-300" />
+                      {surgery.description}
                     </div>
-                  </div>
-                );
-              })}
+                  )}
+                </div>
+              ))}
             </div>
 
-            {/* CTA Button */}
-            <div className="absolute bottom-0 right-0">
-              <a
-                href={`/chirurgie/${selectedSurgery}`}
-                className="group inline-flex items-center text-sm uppercase tracking-wide transition-all duration-300"
-                style={{
-                  color: openAccordion
-                    ? surgeryData[selectedSurgery].color
-                    : undefined,
-                }}
+            <div className="mt-auto pt-6">
+              <Link
+                href="/surgery"
+                className="group inline-flex items-center gap-2 text-xs uppercase tracking-widest text-gray-700 hover:opacity-70 transition-all"
               >
-                <span className="relative">
-                  En savoir plus
-                  <span className="block absolute -bottom-1 left-0 w-full h-px transform origin-left transition-all duration-300 ease-out bg-current scale-x-0 group-hover:scale-x-100" />
-                </span>
-                <ArrowRight className="h-4 w-4 ml-2 transform transition-all duration-300 group-hover:translate-x-1" />
-              </a>
+                <span>En savoir plus</span>
+                <span className="h-px w-8 bg-black transform origin-left transition-all duration-300 ease-out group-hover:w-12"></span>
+              </Link>
             </div>
           </div>
 
-          {/* Image Container */}
-          <div className="relative">
-            <div className="relative h-[600px] w-full rounded-xl overflow-hidden shadow-lg">
+          <div className="col-span-5 col-start-8">
+            <div className="aspect-[3/4] rounded-3xl overflow-hidden relative">
               <Image
                 src="/images/old_woman_running.png"
-                alt="Femme âgée qui court"
+                alt="Illustration chirurgie"
                 fill
                 className="object-cover"
               />
-
-              {/* Points on image */}
-              {activePoints.map((point, index) => (
-                <div
-                  key={index}
-                  className="absolute animate-pulse"
-                  style={{
-                    left: `${point.x}%`,
-                    top: `${point.y}%`,
-                    transform: "translate(-50%, -50%)",
-                  }}
-                >
-                  <div className="relative">
+              {activeId &&
+                surgeryTypes
+                  .find((s) => s.id === activeId)
+                  ?.points.map((point, index) => (
                     <div
-                      className="w-4 h-4 rounded-full"
-                      style={{
-                        backgroundColor: surgeryData[selectedSurgery].color,
-                      }}
-                    />
-                    <div
-                      className="absolute -inset-1 rounded-full opacity-50 animate-ping"
-                      style={{
-                        backgroundColor: surgeryData[selectedSurgery].color,
-                      }}
-                    />
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            {/* Thumbnail Images */}
-            <div className="absolute -right-16 top-0 space-y-4">
-              {[1, 2, 3].map((index) => (
-                <div
-                  key={index}
-                  className="w-24 h-24 bg-gray-100 rounded-lg overflow-hidden shadow-lg"
-                >
-                  <Image
-                    src={`/images/thumbnail-${index}.jpg`}
-                    alt={`Thumbnail ${index}`}
-                    width={96}
-                    height={96}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              ))}
+                      key={index}
+                      className="absolute w-4 h-4 bg-red-500 rounded-full animate-pulse"
+                      style={{ top: point.top, left: point.left }}
+                    ></div>
+                  ))}
             </div>
           </div>
         </div>
       </div>
-    </WhiteSection>
+    </section>
   );
 }
