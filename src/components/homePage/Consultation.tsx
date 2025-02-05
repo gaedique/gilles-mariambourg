@@ -1,6 +1,6 @@
 "use client";
-import React from "react";
-import { Calendar, Hospital, Stethoscope, Info } from "lucide-react";
+import { Calendar, Hospital, Info, Stethoscope } from "lucide-react";
+import React, { useEffect, useRef, useState } from "react";
 
 interface ConsultationCardProps {
   icon: React.ReactNode;
@@ -21,22 +21,21 @@ const ConsultationCard: React.FC<ConsultationCardProps> = ({
 
   return (
     <div className="relative h-full bg-white p-6 group">
-      {/* Overlay pour l'effet de hover */}
-      <div className="absolute inset-0 bg-gray-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-out" />
+      <div className="absolute inset-0 bg-brand-bay-of-many-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-out" />
 
       <div className="relative flex items-start gap-6">
-        {/* Icon avec bordure */}
-        <div className="flex-shrink-0 border border-gray-900 rounded-md p-2 text-gray-900 transition-transform duration-300 ease-out group-hover:scale-110">
+        <div className="flex-shrink-0 border border-brand-bay-of-many-600 rounded-md p-2 text-brand-bay-of-many-600 transition-transform duration-300 ease-out group-hover:scale-110">
           {icon}
         </div>
 
-        {/* Content avec espacements ajustés */}
         <div className="flex-1 max-w-md">
           <div className="mb-4">
-            <h4 className="font-medium text-gray-900 mb-2 transition-colors duration-300 ease-out group-hover:text-gray-900">
+            <h4 className="font-medium text-gray-900 mb-2 transition-colors duration-300 ease-out group-hover:text-brand-bay-of-many-700">
               {title}
             </h4>
-            <p className="text-sm text-gray-500 uppercase">{subtitle}</p>
+            <p className="text-sm text-brand-bay-of-many-600 uppercase">
+              {subtitle}
+            </p>
           </div>
           <div className="space-y-1.5">
             {descriptionArray.map((line, index) => (
@@ -51,9 +50,22 @@ const ConsultationCard: React.FC<ConsultationCardProps> = ({
   );
 };
 
-interface ConsultationSectionProps {}
+export default function ConsultationSection() {
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef(null);
 
-export default function ConsultationSection({}: ConsultationSectionProps) {
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) setIsVisible(true);
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) observer.observe(sectionRef.current);
+    return () => observer.disconnect();
+  }, []);
+
   const consultationCards = [
     {
       icon: <Calendar className="w-5 h-5" />,
@@ -91,26 +103,37 @@ export default function ConsultationSection({}: ConsultationSectionProps) {
   ];
 
   return (
-    <section className="w-full py-24 bg-white">
-      <div className="max-w-6xl mx-auto px-6">
-        {/* Title section */}
-        <div className="flex flex-col items-center justify-center mb-24">
-          <div className="flex items-center gap-3 mb-12">
+    <section
+      ref={sectionRef}
+      className="relative w-full py-24 bg-white  overflow-hidden"
+    >
+      <div className="relative max-w-7xl mx-auto px-6">
+        <div
+          className={`flex flex-col items-center justify-center mb-24 transition-all duration-700 ${
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+          }`}
+        >
+          <div className="flex items-center gap-3 mb-8">
             <div
-              className="w-3 h-3 bg-black rounded-full animate-pulse"
+              className="w-3 h-3 bg-brand-bay-of-many-600 rounded-full animate-pulse"
               aria-hidden="true"
             />
-            <h2 className="text-xs uppercase tracking-wider text-gray-500">
+            <h2 className="text-xs uppercase tracking-wider text-brand-bay-of-many-600">
               Consultation
             </h2>
           </div>
-          <h1 className="text-xl text-gray-400 uppercase tracking-wide mt-2">
+          <h3 className="text-xl text-slate-600 uppercase tracking-wide mt-2">
             Le parcours de soin
-          </h1>
+          </h3>
         </div>
 
-        {/* Cards grid avec hauteurs égales */}
-        <div className="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-gray-200">
+        <div
+          className={`grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-gray-200 transition-all duration-700 delay-300 ${
+            isVisible
+              ? "opacity-100 translate-x-0"
+              : "opacity-0 -translate-x-10"
+          }`}
+        >
           <div className="grid grid-cols-1 divide-y divide-gray-200">
             <div className="h-[250px]">
               <ConsultationCard {...consultationCards[0]} />

@@ -8,7 +8,6 @@ const SectionTransitionWrapper = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      // Calculate scroll progress (0 to 1) based on viewport height
       const scrolled = window.scrollY;
       const viewportHeight = window.innerHeight;
       const progress = Math.min(1, Math.max(0, scrolled / viewportHeight));
@@ -26,7 +25,7 @@ const SectionTransitionWrapper = () => {
 
       {/* Darkening Overlay */}
       <div
-        className="absolute inset-0 pointer-events-none bg-slate-900 transition-opacity duration-300"
+        className="absolute inset-0 pointer-events-none bg-brand-bay-of-many-900 transition-opacity duration-300"
         style={{
           opacity: scrollProgress * 0.35,
           zIndex: 1,
