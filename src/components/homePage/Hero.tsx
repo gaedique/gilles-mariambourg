@@ -1,9 +1,8 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
-import Link from "next/link";
+import { Phone } from "lucide-react";
 import Image from "next/image";
-import { Phone, Menu, X } from "lucide-react";
+import { useEffect, useState } from "react";
 
 const specialties = [
   {
@@ -90,16 +89,16 @@ export default function EnhancedHero() {
   }, []);
 
   return (
-    <div className="relative min-h-screen">
+    <section className="relative min-h-screen">
       {/* Enhanced blob animations using your configured animations */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 -right-1/4 w-1/2 h-1/2 rounded-full bg-brand-bay-of-many-200/30 blur-3xl animate-blob" />
+        <div className="absolute top-3/5 -left-2/5 w-1/2 h-1/2 rounded-full bg-brand-bay-of-many-300/40 blur-2xl animate-blob" />
         <div
-          className="absolute -bottom-1/4 left-1/4 w-1/2 h-1/2 rounded-full bg-brand-bay-of-many-100/30 blur-3xl animate-blob"
+          className="absolute -bottom-3/4 left-1/4 w-1/2 h-1/2 rounded-full bg-brand-bay-of-many-100/30 blur-3xl animate-blob"
           style={{ animationDelay: "2s" }}
         />
         <div
-          className="absolute top-1/2 left-1/3 w-1/3 h-1/3 rounded-full bg-brand-bay-of-many-300/20 blur-3xl animate-blob"
+          className="absolute top-3/5 left-1/3 w-1/3 h-1/3 rounded-full bg-brand-bay-of-many-300/20 blur-3xl animate-blob"
           style={{ animationDelay: "4s" }}
         />
       </div>
@@ -214,6 +213,6 @@ export default function EnhancedHero() {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
