@@ -92,13 +92,8 @@ export default function EnhancedHero() {
     <section className="relative min-h-screen">
       {/* Enhanced blob animations using your configured animations */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-3/5 -left-2/5 w-1/2 h-1/2 rounded-full bg-brand-bay-of-many-300/40 blur-2xl animate-blob" />
         <div
-          className="absolute -bottom-3/4 left-1/4 w-1/2 h-1/2 rounded-full bg-brand-bay-of-many-100/30 blur-3xl animate-blob"
-          style={{ animationDelay: "2s" }}
-        />
-        <div
-          className="absolute top-3/5 left-1/3 w-1/3 h-1/3 rounded-full bg-brand-bay-of-many-300/20 blur-3xl animate-blob"
+          className="absolute top-3/5 left-1/3 w-1/3 h-3/5 rounded-full bg-brand-bay-of-many-300/20 blur-3xl animate-blob"
           style={{ animationDelay: "4s" }}
         />
       </div>

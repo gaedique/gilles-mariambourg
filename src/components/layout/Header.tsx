@@ -1,7 +1,7 @@
 "use client";
-import React, { useState, useEffect } from "react";
-import Link from "next/link";
 import { Menu, X } from "lucide-react";
+import Link from "next/link";
+import { useEffect, useState } from "react";
 
 const EnhancedHeader = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -25,7 +25,12 @@ const EnhancedHeader = () => {
     };
   }, [isMobileMenuOpen]);
 
-  const navItems = ["Actualité", "Expertise", "À propos", "Consultation"];
+  const navItems = [
+    { label: "Actualité", path: "actualite" },
+    { label: "Expertise", path: "expertise" },
+    { label: "À propos", path: "about" },
+    { label: "Consultation", path: "consultation" },
+  ];
 
   return (
     <header
@@ -56,11 +61,11 @@ const EnhancedHeader = () => {
           <div className="hidden md:flex items-center gap-6 lg:gap-8">
             {navItems.map((item) => (
               <Link
-                key={item}
-                href={`/${item.toLowerCase()}`}
+                key={item.label}
+                href={`/${item.path}`}
                 className="relative text-gray-900 hover:text-brand-bay-of-many-600 transition-colors group"
               >
-                <span className="text-sm font-medium">{item}</span>
+                <span className="text-sm font-medium">{item.label}</span>
                 <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-brand-bay-of-many-600 scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
               </Link>
             ))}
@@ -111,12 +116,12 @@ const EnhancedHeader = () => {
         <div className="flex flex-col items-center gap-6 p-6">
           {navItems.map((item) => (
             <Link
-              key={item}
-              href={`/${item.toLowerCase()}`}
+              key={item.label}
+              href={`/${item.path}`}
               className="text-lg text-gray-900 hover:text-brand-bay-of-many-600 transition-colors relative group"
               onClick={() => setIsMobileMenuOpen(false)}
             >
-              <span>{item}</span>
+              <span>{item.label}</span>
               <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-brand-bay-of-many-600 scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
             </Link>
           ))}
