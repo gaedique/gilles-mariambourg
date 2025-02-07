@@ -1,11 +1,13 @@
 "use client";
-import { Menu, X } from "lucide-react";
+import { ChevronDown, Menu, X } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
 const EnhancedHeader = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isExpertiseDropdownOpen, setIsExpertiseDropdownOpen] = useState(false);
+  let timeout;
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
@@ -15,22 +17,34 @@ const EnhancedHeader = () => {
 
   // Prevent scrolling when mobile menu is open
   useEffect(() => {
-    if (isMobileMenuOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "unset";
-    }
+    document.body.style.overflow = isMobileMenuOpen ? "hidden" : "unset";
     return () => {
       document.body.style.overflow = "unset";
     };
   }, [isMobileMenuOpen]);
 
   const navItems = [
-    { label: "Actualité", path: "actualite" },
-    { label: "Expertise", path: "expertise" },
+    { label: "Actualité", path: "news" },
+    { label: "Expertise", path: "surgery" },
     { label: "À propos", path: "about" },
     { label: "Consultation", path: "consultation" },
   ];
+
+  const expertiseItems = [
+    { label: "Chirurgie du Rachis", path: "expertise/rachis" },
+    { label: "Prothèse de Hanche", path: "expertise/prothese-hanche" },
+    { label: "Prothèse de Genou", path: "expertise/prothese-genou" },
+  ];
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+    setIsExpertiseDropdownOpen(false);
+  };
+
+  const closeMobileMenu = () => {
+    setIsMobileMenuOpen(false);
+    setIsExpertiseDropdownOpen(false);
+  };
 
   return (
     <header
@@ -60,44 +74,79 @@ const EnhancedHeader = () => {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-6 lg:gap-8">
             {navItems.map((item) => (
-              <Link
+              <div
                 key={item.label}
-                href={`/${item.path}`}
-                className="relative text-gray-900 hover:text-brand-bay-of-many-600 transition-colors group"
+                className="relative group"
+                onMouseEnter={() => {
+                  if (item.label === "Expertise") {
+                    clearTimeout(timeout); // Empêche la fermeture instantanée
+                    setIsExpertiseDropdownOpen(true);
+                  }
+                }}
+                onMouseLeave={() => {
+                  if (item.label === "Expertise") {
+                    timeout = setTimeout(
+                      () => setIsExpertiseDropdownOpen(false),
+                      200
+                    ); // Délai avant fermeture
+                  }
+                }}
               >
-                <span className="text-sm font-medium">{item.label}</span>
-                <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-brand-bay-of-many-600 scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
-              </Link>
+                {item.label === "Expertise" ? (
+                  <div className="cursor-pointer">
+                    <div className="flex items-center">
+                      <span className="text-sm font-medium text-gray-900 hover:text-brand-bay-of-many-600 transition-colors">
+                        {item.label}
+                      </span>
+                      <ChevronDown
+                        className={`ml-1 text-gray-500 transition-transform ${
+                          isExpertiseDropdownOpen ? "rotate-180" : ""
+                        }`}
+                        size={16}
+                      />
+                    </div>
+                    {isExpertiseDropdownOpen && (
+                      <div
+                        className="absolute top-full left-0 mt-2 w-56 bg-white border border-gray-200 rounded-lg shadow-lg z-20 py-1"
+                        onMouseEnter={() => setIsExpertiseDropdownOpen(true)}
+                        onMouseLeave={() => setIsExpertiseDropdownOpen(false)}
+                      >
+                        {expertiseItems.map((expertiseItem) => (
+                          <Link
+                            key={expertiseItem.label}
+                            href={`/${expertiseItem.path}`}
+                            className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
+                          >
+                            {expertiseItem.label}
+                          </Link>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                ) : (
+                  <Link
+                    href={`/${item.path}`}
+                    className="text-gray-900 hover:text-brand-bay-of-many-600 transition-colors group"
+                  >
+                    <span className="text-sm font-medium">{item.label}</span>
+                    <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-brand-bay-of-many-600 scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
+                  </Link>
+                )}
+              </div>
             ))}
 
-            {/* Contact Link with enhanced blob effect */}
+            {/* Contact Link */}
             <Link
               href="/contact"
               className="relative px-5 py-2 sm:px-6 sm:py-2.5 bg-brand-bay-of-many-600 text-white rounded-xl overflow-hidden group hover:bg-brand-bay-of-many-700 transition-colors"
             >
               <span className="relative z-20 text-sm font-medium">Contact</span>
-              {/* Enhanced blob effect */}
-              <div className="absolute inset-0 w-full h-full">
-                <div
-                  className="absolute -inset-full bg-brand-bay-of-many-400 blur-2xl group-hover:animate-blob-slow opacity-0 group-hover:opacity-80"
-                  style={{ transformOrigin: "center" }}
-                />
-                <div
-                  className="absolute -inset-full bg-brand-bay-of-many-500 blur-xl group-hover:animate-blob-slow opacity-0 group-hover:opacity-80"
-                  style={{
-                    transformOrigin: "center",
-                    animationDelay: "-3s",
-                  }}
-                />
-              </div>
-              {/* Base gradient */}
-              <div className="absolute inset-0 z-10 bg-gradient-to-r from-brand-bay-of-many-600 to-brand-bay-of-many-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </Link>
           </div>
 
           {/* Mobile Menu Button */}
           <button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            onClick={toggleMobileMenu}
             className="md:hidden p-2 text-gray-900 hover:text-brand-bay-of-many-600 transition-colors"
             aria-label="Toggle menu"
           >
@@ -110,25 +159,52 @@ const EnhancedHeader = () => {
       <div
         className={`fixed inset-0 bg-white/95 backdrop-blur-sm transform transition-transform duration-300 ease-in-out ${
           isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
-        } md:hidden`}
+        } md:hidden z-50`}
         style={{ top: "5rem" }}
       >
         <div className="flex flex-col items-center gap-6 p-6">
           {navItems.map((item) => (
-            <Link
-              key={item.label}
-              href={`/${item.path}`}
-              className="text-lg text-gray-900 hover:text-brand-bay-of-many-600 transition-colors relative group"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              <span>{item.label}</span>
-              <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-brand-bay-of-many-600 scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
-            </Link>
+            <div key={item.label} className="w-full">
+              {item.label === "Expertise" ? (
+                <div>
+                  <button
+                    onClick={() =>
+                      setIsExpertiseDropdownOpen(!isExpertiseDropdownOpen)
+                    }
+                    className="text-lg text-gray-900 hover:text-brand-bay-of-many-600 transition-colors w-full text-left"
+                  >
+                    {item.label}
+                  </button>
+                  {isExpertiseDropdownOpen && (
+                    <div className="mt-2 space-y-2">
+                      {expertiseItems.map((expertiseItem) => (
+                        <Link
+                          key={expertiseItem.label}
+                          href={`/${expertiseItem.path}`}
+                          className="block pl-4 text-gray-700 hover:text-brand-bay-of-many-600"
+                          onClick={closeMobileMenu}
+                        >
+                          {expertiseItem.label}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <Link
+                  href={`/${item.path}`}
+                  className="text-lg text-gray-900 hover:text-brand-bay-of-many-600 transition-colors block"
+                  onClick={closeMobileMenu}
+                >
+                  {item.label}
+                </Link>
+              )}
+            </div>
           ))}
           <Link
             href="/contact"
             className="mt-4 w-full px-8 py-3 bg-brand-bay-of-many-600 text-white rounded-xl hover:bg-brand-bay-of-many-700 transition-colors text-center"
-            onClick={() => setIsMobileMenuOpen(false)}
+            onClick={closeMobileMenu}
           >
             Contact
           </Link>
