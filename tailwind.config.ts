@@ -75,6 +75,20 @@ export default {
           "0%": { opacity: "0", transform: "scale(0.9)" },
           "100%": { opacity: "1", transform: "scale(1)" },
         },
+        //Play btn
+        fadeIn: {
+          "0%": { opacity: "0" },
+          "100%": { opacity: "1" },
+        },
+        triangleStroke: {
+          "0%": { strokeDashoffset: "90" },
+          "100%": { strokeDashoffset: "0" },
+        },
+        smallScale: {
+          "100%": { transform: "scale(1)" },
+          "0%": { transform: "scale(1.5)" },
+        },
+        // end play btn
       },
       animation: {
         blob: "blob 7s infinite",

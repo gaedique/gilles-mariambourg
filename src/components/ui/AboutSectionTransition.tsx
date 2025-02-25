@@ -1,6 +1,6 @@
 "use client";
-import React, { useState, useEffect, useRef } from "react";
-import About from "../homePage/About"; // Import the existing About component
+import { useEffect, useRef, useState } from "react";
+import About from "../home/AboutSection"; // Import the existing About component
 
 const AboutSectionTransition = () => {
   const [isVisible, setIsVisible] = useState(false);

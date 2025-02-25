@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 // import { Syne, Inter, DM_Sans } from "next/font/google";
 // import { Playfair_Display, Roboto, Raleway } from "next/font/google";
-import { Montserrat, Merriweather, Roboto } from "next/font/google";
+import { Merriweather, Montserrat, Roboto } from "next/font/google";
 // import { Raleway, Lato, PT_Sans } from "next/font/google";
 
 import "@/src/styles/globals.css";
@@ -101,9 +101,7 @@ export default function RootLayout({
           "min-h-full text-gray-900 font-body"
         )}
       >
-        {/* <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 overflow-x-hidden"> */}
-        {children}
-        {/* </div> */}
+        <div className="w-full mx-auto">{children}</div>
       </body>
     </html>
   );
