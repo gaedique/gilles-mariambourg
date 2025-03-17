@@ -2,88 +2,99 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
-html,
-body {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-*,
-*:before,
-*:after {
-  box-sizing: inherit;
-  /* outline: 1px solid red; */
-}
-
-body {
-  font-family: var(--font-body);
-  line-height: 1.5;
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-}
-
+/* ==========================================================================
+   Base Variables
+   ========================================================================== */
 :root {
+  /* Layout variables */
   --vh: 100vh;
+  --navbar-height: 4rem;
+  --section-spacing: 4rem;
+
+  /* Font variables */
+  --font-heading: "Manrope", sans-serif;
+  --font-body: "Nunito Sans", sans-serif;
+  --font-accent: "Overpass", sans-serif;
 }
 
+/* Dynamic viewport height for mobile browsers */
 @supports (height: 100dvh) {
   :root {
     --vh: 100dvh;
   }
 }
 
-/* Animation du halo coloré */
-@keyframes pulse-glow {
-  0% {
-    opacity: 0.6;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 0.8;
-    transform: scale(1.15);
-  }
-  100% {
-    opacity: 0.6;
-    transform: scale(1);
+/* Responsive adjustments */
+@media (min-width: 640px) {
+  :root {
+    --navbar-height: 5rem;
+    --section-spacing: 6rem;
   }
 }
 
-.halo-glow {
-  background: radial-gradient(
-    circle,
-    rgba(173, 216, 230, 0.4) 0%,
-    rgba(173, 216, 230, 0.2) 40%,
-    rgba(173, 216, 230, 0) 80%
-  );
-  filter: blur(30px);
-  animation: pulse-glow 3s infinite ease-in-out;
-}
-
-@keyframes float {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-20px);
+@media (min-width: 1024px) {
+  :root {
+    --section-spacing: 8rem;
   }
 }
 
-@keyframes float-delay {
-  0%,
-  100% {
-    transform: translateY(0);
+/* ==========================================================================
+   Base Styles (using Tailwind's @layer)
+   ========================================================================== */
+@layer base {
+  /* Reset and base styles */
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
   }
-  50% {
-    transform: translateY(-15px);
+
+  *,
+  *:before,
+  *:after {
+    box-sizing: inherit;
+  }
+
+  /* Typography base styles */
+  body {
+    @apply text-primary;
+    font-family: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Heading styles - Tailwind will apply font-medium via the @apply directive */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  .font-heading {
+    font-family: var(--font-heading), ui-sans-serif, system-ui, sans-serif;
+    @apply font-medium;
+  }
+
+  /* Accent font */
+  .font-accent {
+    font-family: var(--font-accent), ui-sans-serif, system-ui, sans-serif;
   }
 }
 
-.animate-float {
-  animation: float 6s ease-in-out infinite;
+/* ==========================================================================
+   Layout
+   ========================================================================== */
+section + section {
+  margin-top: var(--section-spacing);
 }
 
-.animate-float-delay {
-  animation: float-delay 8s ease-in-out infinite;
+/* ==========================================================================
+   Utilities (not covered by Tailwind)
+   ========================================================================== */
+.container-full {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
 }

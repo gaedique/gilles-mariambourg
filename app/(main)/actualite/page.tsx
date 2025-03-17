@@ -11,7 +11,7 @@ export default function ActualitePage() {
       {/* Hero Section */}
       <div className="mb-16 text-center">
         <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
-          L'Endoscopie Biportale Rachidienne
+          L&aposEndoscopie Biportale Rachidienne
         </h1>
         <p className="text-lg text-slate-600 max-w-3xl mx-auto">
           Une technique mini-invasive révolutionnaire pour la chirurgie du
@@ -28,10 +28,11 @@ export default function ActualitePage() {
               Une expertise unique en France
             </h2>
             <p className="text-slate-600">
-              L'endoscopie biportale rachidienne représente une avancée majeure
-              dans le traitement des pathologies du rachis. Cette technique
-              mini-invasive, pratiquée par le Dr Mariambourg, permet une
-              récupération plus rapide et minimise les traumatismes tissulaires.
+              L&aposendoscopie biportale rachidienne représente une avancée
+              majeure dans le traitement des pathologies du rachis. Cette
+              technique mini-invasive, pratiquée par le Dr Mariambourg, permet
+              une récupération plus rapide et minimise les traumatismes
+              tissulaires.
             </p>
 
             <h3 className="text-xl font-semibold text-slate-900 mt-8 mb-4">
@@ -59,7 +60,7 @@ export default function ActualitePage() {
                   <span className="text-blue-600">3</span>
                 </div>
                 <span className="text-slate-600">
-                  Risque d'infection réduit
+                  Risque d&aposinfection réduit
                 </span>
               </li>
               <li className="flex items-start">
@@ -82,7 +83,7 @@ export default function ActualitePage() {
                 <li>• Hernies discales</li>
                 <li>• Sténoses du canal lombaire</li>
                 <li>• Compressions radiculaires</li>
-                <li>• Certaines formes d'arthrose vertébrale</li>
+                <li>• Certaines formes d&aposarthrose vertébrale</li>
               </ul>
             </CardContent>
           </Card>
@@ -108,14 +109,14 @@ export default function ActualitePage() {
                 Passage TV
               </h3>
               <p className="text-slate-600 mb-4">
-                Découvrez l'interview du Dr Mariambourg présentant cette
+                Découvrez l&aposinterview du Dr Mariambourg présentant cette
                 technique innovante lors de son passage télévisé.
               </p>
               <a
                 href="#"
                 className="inline-flex items-center text-blue-600 hover:text-blue-800 transition-colors"
               >
-                Voir l'interview complète
+                Voir l&aposinterview complète
                 <span className="ml-2">→</span>
               </a>
             </CardContent>

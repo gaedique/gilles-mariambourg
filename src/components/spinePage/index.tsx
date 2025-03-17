@@ -1,6 +1,6 @@
 "use client";
 
-import Layout from "@/src/components/layout/Layout";
+import Layout from "@/src/components/layout/LayoutWrapper";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
