@@ -1,11 +1,7 @@
 "use client";
 
-import { useState, useEffect } from "react";
-
-interface ScrollState {
-  isScrolled: boolean;
-  scrollProgress: number;
-}
+import { useEffect, useState } from "react";
+import { ScrollState } from "./types";
 
 export const useHeroScroll = (): ScrollState => {
   const [isScrolled, setIsScrolled] = useState<boolean>(false);

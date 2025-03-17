@@ -1,4 +1,4 @@
-import ActionButton from "@/src/components/ui/ActionButton";
+import ActionButton from "@/src/components/ui/CtaButton";
 import { ArrowLeft, FileText, Mail, Phone } from "lucide-react";
 import Head from "next/head";
 import React from "react";

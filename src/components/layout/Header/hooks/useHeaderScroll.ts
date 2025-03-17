@@ -1,23 +1,63 @@
-// Hook personnalisé pour gérer le défilement et le menu mobile
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 
-export const useHeaderScroll = () => {
+interface UseHeaderScrollReturn {
+  isScrolled: boolean;
+  isMobileMenuOpen: boolean;
+  setIsMobileMenuOpen: (isOpen: boolean) => void;
+  scrollPosition: number;
+}
+
+export const useHeaderScroll = (
+  scrollThreshold: number = 10,
+  closeMenuOnScroll: boolean = true
+): UseHeaderScrollReturn => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [scrollPosition, setScrollPosition] = useState(0);
 
-  useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 50);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  const handleScroll = useCallback(() => {
+    const currentScrollPos = window.scrollY;
+    setScrollPosition(currentScrollPos);
 
+    // Update scrolled state based on threshold
+    setIsScrolled(currentScrollPos > scrollThreshold);
+
+    // Optionally close mobile menu when scrolling
+    if (closeMenuOnScroll && isMobileMenuOpen && currentScrollPos > 50) {
+      setIsMobileMenuOpen(false);
+    }
+  }, [scrollThreshold, closeMenuOnScroll, isMobileMenuOpen]);
+
+  // Update body overflow based on mobile menu state
   useEffect(() => {
-    document.body.style.overflow = isMobileMenuOpen ? "hidden" : "unset";
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+
     return () => {
-      document.body.style.overflow = "unset";
+      document.body.style.overflow = "";
     };
   }, [isMobileMenuOpen]);
 
-  return { isScrolled, isMobileMenuOpen, setIsMobileMenuOpen };
+  // Add scroll event listener
+  useEffect(() => {
+    // Run once on mount to set initial state
+    handleScroll();
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [handleScroll]);
+
+  return {
+    isScrolled,
+    isMobileMenuOpen,
+    setIsMobileMenuOpen,
+    scrollPosition,
+  };
 };

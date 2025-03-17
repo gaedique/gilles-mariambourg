@@ -1,111 +1,131 @@
 "use client";
-import SectionTitle from "@/src/components/ui/SectionTitle";
-import { Video } from "lucide-react";
-import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import { getNewsSection, newsSection } from "@/src/data/siteData";
+import { HighlightText } from "@/src/ui/HighlightText";
+import ScrollReveal from "@/src/ui/ScrollReveal";
+import { SecondaryLink } from "@/src/ui/SecondaryLink";
+import SectionTitle from "@/src/ui/SectionTitle";
+import TexturedBackground from "@/src/ui/TexturedBackground";
+import { useRef } from "react";
 import { BenefitsList } from "./components/BenefitsList";
 import { VideoSection } from "./components/VideoSection";
-import { defaultNewsSection } from "./constants/defaults";
 import { NewsSectionProps } from "./types";
 
 export default function NewsSection({
-  description = defaultNewsSection.description,
-  videoUrl = defaultNewsSection.videoUrl,
-  benefits = defaultNewsSection.benefits,
-  thumbnailUrl = defaultNewsSection.thumbnailUrl,
+  title,
+  subtitle,
+  description,
+  videoUrl,
+  benefits,
+  thumbnailUrl,
 }: NewsSectionProps) {
-  const [isVisible, setIsVisible] = useState(false);
+  const newsData = getNewsSection();
+
+  // Use provided props or fallback to data from siteData
+  const sectionTitle = title || newsData.title;
+  const sectionSubtitle = subtitle || newsData.subtitle;
+  const sectionDescription = description || newsData.description;
+  const sectionVideoUrl = videoUrl || newsData.videoUrl;
+  const sectionBenefits = benefits || newsData.benefits.slice(0, 3);
+  const sectionThumbnailUrl = thumbnailUrl || newsData.thumbnailUrl;
+
   const sectionRef = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
 
   return (
     <section
       ref={sectionRef}
-      className="w-full pt-[13%] pb-12 md:pb-24 transition-colors duration-300 bg-gradient-to-b from-transparent via-slate-50/90 to-white border-b border-slate-200"
+      className="w-full relative bg-gradient-to-b from-transparent via-brand-bay-of-many-200/40 to-white"
+      aria-labelledby="titre-section-actualite"
+      id="endoscopie-biportale-rachidienne"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12 md:pb-24">
-        <div
-          className={`flex flex-col items-center justify-center mb-12 md:mb-24 relative transition-all duration-1000 ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-          }`}
-        >
-          <div className="flex items-center">
-            <SectionTitle
-              subtitle="Actualité"
-              title="Une révolution chirurgicale"
-              largeTitle="ENDOSCOPIE BIPORTALE RACHIDIENNE"
-              centered
-            />
-          </div>
-        </div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-24">
-          <div
-            className={`col-span-1 lg:col-span-5 flex flex-col justify-center space-y-8 md:space-y-12 transition-all duration-700 delay-300 ${
-              isVisible
-                ? "opacity-100 translate-x-0"
-                : "opacity-0 -translate-x-10"
-            }`}
-          >
-            <div className="space-y-8">
-              <p className="text-base text-slate-600 leading-relaxed">
-                {description}
-              </p>
-              <BenefitsList benefits={benefits} />
-            </div>
-
-            <div className="flex flex-col sm:flex-row gap-4 sm:gap-8">
-              <Link
-                href="/NewsPage"
-                className="group inline-flex items-center gap-2 text-xs uppercase tracking-widest text-brand-bay-of-many-800 hover:text-brand-bay-of-many-600 transition-all"
-              >
-                <span>Découvrir</span>
-                <span className="h-px w-6 sm:w-8 bg-brand-bay-of-many-600 transform origin-left scale-x-100 transition-transform duration-300 ease-out group-hover:scale-x-150" />
-              </Link>
-
-              <Link
-                href={videoUrl}
-                className="group inline-flex items-center gap-2 text-xs uppercase tracking-widest text-brand-bay-of-many-800 hover:text-brand-bay-of-many-600 transition-all"
-              >
-                <span>Regarder la vidéo</span>
-                <Video className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
-              </Link>
-            </div>
+      <ScrollReveal threshold={0.1} duration={1250}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-8">
+          {/* Title area with highlighted technique name */}
+          <div className="flex flex-col items-center justify-center mb-12 md:mb-16 relative">
+            <p className="text-4xl md:text-5xl font-heading font-medium tracking-wide text-center px-6 py-3">
+              <strong className="relative inline-block animate-pulse">
+                ENDOSCOPIE BIPORTALE RACHIDIENNE
+                <span
+                  className="absolute -bottom-2 left-0 w-16 h-1 bg-brand-bay-of-many-600"
+                  aria-hidden="true"
+                ></span>
+              </strong>
+            </p>
           </div>
 
-          <div
-            className={`col-span-1 lg:col-span-7 relative transition-all duration-700 delay-500 ${
-              isVisible
-                ? "opacity-100 translate-x-0"
-                : "opacity-0 translate-x-10"
-            }`}
-          >
-            <div className="aspect-[16/9] relative rounded-xl overflow-hidden shadow-2xl bg-white">
-              <VideoSection
-                videoUrl={videoUrl}
-                thumbnailUrl={thumbnailUrl}
-                thumbnailAlt="Endoscopie biportale rachidienne"
+          <SectionTitle
+            title={sectionTitle}
+            subtitle={sectionSubtitle}
+            centered
+            id="titre-section-actualite"
+          />
+
+          {/* Content area with texture */}
+          <div className="relative rounded-2xl overflow-hidden">
+            {/* Background texture */}
+            <div className="absolute inset-0">
+              <TexturedBackground
+                className="absolute inset-0"
+                baseFrom="from-blue-100/60"
+                baseVia="via-indigo-100/50"
+                baseTo="to-slate-100/70"
+                spotOneColor="bg-blue-200/40"
+                spotTwoColor="bg-indigo-200/30"
+                noiseOpacity={60}
+                noiseContrast={140}
               />
             </div>
+
+            {/* Content */}
+            <div className="relative px-6 py-8 md:p-10 lg:p-12">
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16">
+                <div className="col-span-1 lg:col-span-5 flex flex-col justify-center space-y-8 md:space-y-12">
+                  <div className="space-y-8 pr-4">
+                    <p className="text-base font-heading font-bold sm:text-lg leading-relaxed text-justify">
+                      <HighlightText
+                        text={sectionDescription}
+                        highlight="endoscopie biportale rachidienne"
+                      />
+                    </p>
+                    <BenefitsList benefits={sectionBenefits} />
+                  </div>
+
+                  <div className="flex flex-col sm:flex-row gap-4 sm:gap-8">
+                    <SecondaryLink
+                      href={sectionVideoUrl}
+                      ariaLabel="Regarder la vidéo sur l'endoscopie biportale rachidienne"
+                      variant="icon"
+                      iconType="video"
+                    >
+                      {newsSection.ctaVideo}
+                    </SecondaryLink>
+
+                    <SecondaryLink
+                      href={newsSection.ctaLink}
+                      ariaLabel="Découvrir plus d'informations sur l'endoscopie biportale rachidienne"
+                      variant="line"
+                    >
+                      {newsSection.ctaText}
+                    </SecondaryLink>
+                  </div>
+                </div>
+
+                <div
+                  className="col-span-1 lg:col-span-7 relative"
+                  role="complementary"
+                >
+                  <div className="aspect-[16/9] relative rounded-xl overflow-hidden shadow-2xl bg-white">
+                    <VideoSection
+                      videoUrl={sectionVideoUrl}
+                      thumbnailUrl={sectionThumbnailUrl}
+                      thumbnailAlt="Démonstration de la technique d'endoscopie biportale rachidienne"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
+      </ScrollReveal>
     </section>
   );
 }

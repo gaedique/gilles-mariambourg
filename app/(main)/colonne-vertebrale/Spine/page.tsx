@@ -1,5 +1,5 @@
 "use client";
-import Layout from "@/src/components/layout/Layout";
+import Layout from "@/src/components/layout/LayoutWrapper";
 import { Alert, AlertDescription, AlertTitle } from "@/src/components/ui/Alert";
 import { motion } from "framer-motion";
 import { AlertCircle } from "lucide-react";

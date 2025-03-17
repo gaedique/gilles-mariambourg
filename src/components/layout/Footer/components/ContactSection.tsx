@@ -1,33 +1,34 @@
-import ActionButton from "@/src/components/ui/ActionButton";
+import CtaButton from "@/src/ui/CtaButton";
+import { doctor, contact } from "@/src/data/siteData";
 import { Phone } from "lucide-react";
 
 const ContactSection = () => (
-  <div className="col-span-1 sm:col-span-2 md:col-span-4 space-y-4 sm:space-y-6">
-    <h3 className="text-lg font-semibold">Dr. Gilles Mariambourg</h3>
-    <p className="text-brand-bay-of-many-100 text-sm">
-      Chirurgien orthopédique
-    </p>
+  <section className="col-span-1 sm:col-span-2 md:col-span-4 space-y-4 sm:space-y-6">
+    <h4 className="text-lg font-semibold">{doctor.fullName}</h4>
+    <p className="text-brand-bay-of-many-100 text-sm">{doctor.title}</p>
     <div className="flex flex-col gap-3 sm:gap-4">
-      <ActionButton
+      <CtaButton
         href="https://www.doctolib.fr"
         external
         variant="dark"
         size="md"
         className="w-full sm:w-auto"
+        aria-label="Prendre rendez-vous sur Doctolib"
       >
         Prendre rendez-vous sur Doctolib
-      </ActionButton>
-      <ActionButton
+      </CtaButton>
+      <CtaButton
         href="tel:+33563718804"
         variant="light"
         icon={Phone}
         size="md"
         className="w-full sm:w-auto"
+        aria-label="Appeler le cabinet"
       >
-        05 63 71 88 04
-      </ActionButton>
+        <span itemProp="telephone">{contact.details.phone}</span>
+      </CtaButton>
     </div>
-  </div>
+  </section>
 );
 
 export default ContactSection;

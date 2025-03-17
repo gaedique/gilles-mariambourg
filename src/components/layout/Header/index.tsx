@@ -1,156 +1,171 @@
 "use client";
-import ActionButton from "@/src/components/ui/ActionButton";
-import { navItems } from "@/src/data/navItems";
-import { ChevronDown, Menu, X } from "lucide-react";
-import Link from "next/link";
-
-import { DropdownMenu } from "./components/DropdownMenu";
+import { contact, doctor, meta } from "@/src/data/siteData";
+import { useEffect, useState } from "react";
+import DesktopNav from "./components/DesktopNav";
 import { Logo } from "./components/Logo";
-import { NavLink } from "./components/NavLink";
-import { useDropdownMenu } from "./hooks/useDropdownMenu";
+import MobileMenuButton from "./components/MobileMenuButton";
+import MobileNav from "./components/MobileNav";
+import { useDesktopDropdown } from "./hooks/useDesktopDropdown";
 import { useHeaderScroll } from "./hooks/useHeaderScroll";
 
 const Header = () => {
   const { isScrolled, isMobileMenuOpen, setIsMobileMenuOpen } =
     useHeaderScroll();
+
   const {
-    isExpertiseDropdownOpen,
-    setIsExpertiseDropdownOpen,
+    isDropdownOpen,
+    setIsDropdownOpen,
     handleMouseEnter,
     handleMouseLeave,
-  } = useDropdownMenu();
+    handleKeyDown,
+    dropdownRef,
+    triggerRef,
+  } = useDesktopDropdown({ closeDelay: 200 });
+
+  // Manage keyboard navigation for accessibility
+  const [isKeyboardUser, setIsKeyboardUser] = useState(false);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Tab") {
+        setIsKeyboardUser(true);
+      }
+    };
+
+    const handleMouseDown = () => {
+      setIsKeyboardUser(false);
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    window.addEventListener("mousedown", handleMouseDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+      window.removeEventListener("mousedown", handleMouseDown);
+    };
+  }, []);
+
+  // Close mobile menu on escape key
+  useEffect(() => {
+    const handleEscapeKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape" && isMobileMenuOpen) {
+        setIsMobileMenuOpen(false);
+      }
+    };
+
+    window.addEventListener("keydown", handleEscapeKey);
+    return () => window.removeEventListener("keydown", handleEscapeKey);
+  }, [isMobileMenuOpen, setIsMobileMenuOpen]);
+
+  // Add aria attributes for improved semantics/a11y
+  const mobileMenuId = "mobile-navigation-menu";
 
   return (
     <header
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
+      className={`fixed top-4 left-0 w-full z-50 transition-all duration-300 ${
         isScrolled ? "bg-white/95 backdrop-blur-sm shadow-sm" : "bg-transparent"
       }`}
+      role="banner"
+      aria-label="Site header"
+      itemScope
+      itemType="https://schema.org/WPHeader"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        <nav className="flex items-center justify-between h-16 sm:h-20">
-          {/* Logo */}
-          <Logo />
-
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-4 lg:gap-8">
-            {navItems.map((item) => (
-              <div
-                key={item.label}
-                className="relative group"
-                onMouseEnter={item.dropdownItems ? handleMouseEnter : undefined}
-                onMouseLeave={item.dropdownItems ? handleMouseLeave : undefined}
-              >
-                {item.dropdownItems ? (
-                  <div className="cursor-pointer">
-                    <div className="flex items-center gap-1">
-                      <span className="text-sm font-medium text-gray-900 hover:text-brand-bay-of-many-600 transition-colors">
-                        {item.label}
-                      </span>
-                      <ChevronDown
-                        className={`text-gray-500 transition-transform ${
-                          isExpertiseDropdownOpen ? "rotate-180" : ""
-                        }`}
-                        size={14}
-                      />
-                    </div>
-                    {isExpertiseDropdownOpen && (
-                      <DropdownMenu
-                        items={item.dropdownItems}
-                        onItemClick={() => setIsExpertiseDropdownOpen(false)}
-                        onMouseEnter={handleMouseEnter}
-                        onMouseLeave={handleMouseLeave}
-                      />
-                    )}
-                  </div>
-                ) : (
-                  <div className="group">
-                    <NavLink href={item.path} className="relative group">
-                      <span className="text-sm font-medium">{item.label}</span>
-                      <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-brand-bay-of-many-600 scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
-                    </NavLink>
-                  </div>
-                )}
-              </div>
-            ))}
-
-            <ActionButton href="/contact">Contact</ActionButton>
-          </div>
-
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden p-2 text-gray-900 hover:text-brand-bay-of-many-600 transition-colors"
-            aria-label="Toggle menu"
+      <div className="max-w-[1440px] mx-auto flex items-center justify-between h-[var(--navbar-height)] px-4 sm:px-6">
+        {/* Logo with Skip to Main Content Link for A11y */}
+        <div className="flex items-center">
+          <a
+            href="#main-content"
+            onClick={(e) => {
+              e.preventDefault();
+              document.getElementById("main-content")?.focus();
+              document
+                .getElementById("main-content")
+                ?.scrollIntoView({ behavior: "smooth" });
+            }}
+            className={`sr-only focus:not-sr-only focus:absolute focus:p-2 focus:bg-white focus:text-blue-600 focus:z-50 ${
+              isKeyboardUser ? "focus:block" : "focus:hidden"
+            }`}
           >
-            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
-        </nav>
-      </div>
+            Skip to main content
+          </a>
 
-      {/* Mobile Navigation Menu */}
-      <div
-        className={`fixed inset-0 bg-white/95 backdrop-blur-sm transform transition-transform duration-300 ease-in-out ${
-          isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
-        } md:hidden z-50`}
-        style={{ top: "4rem" }}
-      >
-        <div className="flex flex-col items-start gap-4 p-6 bg-white/95 backdrop-blur-sm shadow-sm">
-          {navItems.map((item) => (
-            <div key={item.label} className="w-full">
-              {item.dropdownItems ? (
-                <div>
-                  <button
-                    onClick={() =>
-                      setIsExpertiseDropdownOpen(!isExpertiseDropdownOpen)
-                    }
-                    className="flex items-center gap-2 text-base text-gray-900 hover:text-brand-bay-of-many-600 transition-colors w-full text-left"
-                  >
-                    {item.label}
-                    <ChevronDown
-                      className={`transition-transform ${
-                        isExpertiseDropdownOpen ? "rotate-180" : ""
-                      }`}
-                      size={16}
-                    />
-                  </button>
-                  {isExpertiseDropdownOpen && (
-                    <div className="mt-2 ml-4 space-y-2">
-                      {item.dropdownItems.map((dropdownItem) => (
-                        <NavLink
-                          key={dropdownItem.label}
-                          href={dropdownItem.path}
-                          className="block py-1 text-gray-700 hover:text-brand-bay-of-many-600"
-                          onClick={() => {
-                            setIsMobileMenuOpen(false);
-                            setIsExpertiseDropdownOpen(false);
-                          }}
-                        >
-                          {dropdownItem.label}
-                        </NavLink>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              ) : (
-                <NavLink
-                  href={item.path}
-                  className="block text-base py-1"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  {item.label}
-                </NavLink>
-              )}
+          {/* Organization and Doctor Schema.org markup */}
+          <div
+            itemScope
+            itemType="https://schema.org/Organization"
+            className="flex items-center"
+          >
+            <meta itemProp="name" content={doctor.fullName} />
+            <meta itemProp="url" content={meta.siteUrl} />
+            <meta itemProp="logo" content={`${meta.siteUrl}${meta.siteLogo}`} />
+            <meta itemProp="description" content={meta.siteDescription} />
+
+            {/* Address information */}
+            <div
+              itemProp="address"
+              itemScope
+              itemType="https://schema.org/PostalAddress"
+              className="hidden"
+            >
+              <meta itemProp="streetAddress" content={contact.address.street} />
+              <meta itemProp="addressLocality" content={contact.address.city} />
+              <meta
+                itemProp="postalCode"
+                content={contact.address.postalCode}
+              />
+              <meta itemProp="addressCountry" content="FR" />
             </div>
-          ))}
-          <Link
-            href="/contact"
-            className="mt-4 w-full px-6 py-2.5 bg-brand-bay-of-many-600 text-white rounded-xl hover:bg-brand-bay-of-many-700 transition-colors text-center"
-            onClick={() => setIsMobileMenuOpen(false)}
-          >
-            Contact
-          </Link>
+
+            {/* Contact information */}
+            <meta itemProp="telephone" content={contact.details.phone} />
+            {contact.details.doctolib && (
+              <meta itemProp="sameAs" content={contact.details.doctolib} />
+            )}
+
+            {/* Person markup (doctor) */}
+            <div
+              itemScope
+              itemType="https://schema.org/Physician"
+              itemProp="founder"
+              className="hidden"
+            >
+              <meta itemProp="name" content={doctor.fullName} />
+              <meta itemProp="jobTitle" content={doctor.title} />
+              <meta itemProp="description" content={doctor.description.short} />
+              <meta
+                itemProp="image"
+                content={`${meta.siteUrl}${doctor.image.src}`}
+              />
+            </div>
+
+            <Logo />
+          </div>
         </div>
+
+        {/* Desktop Navigation */}
+        <DesktopNav
+          isExpertiseDropdownOpen={isDropdownOpen}
+          setIsExpertiseDropdownOpen={setIsDropdownOpen}
+          handleMouseEnter={handleMouseEnter}
+          handleMouseLeave={handleMouseLeave}
+          handleKeyDown={handleKeyDown}
+          dropdownRef={dropdownRef}
+          triggerRef={triggerRef}
+        />
+
+        {/* Tablet/Mobile Menu Button */}
+        <MobileMenuButton
+          isMobileMenuOpen={isMobileMenuOpen}
+          setIsMobileMenuOpen={setIsMobileMenuOpen}
+          ariaControls={mobileMenuId}
+        />
       </div>
+
+      {/* Tablet/Mobile Navigation Menu - Only passing required props */}
+      <MobileNav
+        isMobileMenuOpen={isMobileMenuOpen}
+        setIsMobileMenuOpen={setIsMobileMenuOpen}
+      />
     </header>
   );
 };
