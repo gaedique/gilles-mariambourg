@@ -1,17 +1,13 @@
 import { siteData } from "./siteData";
+import {
+  Biography,
+  BiographySection,
+  SectionWithContent,
+  SectionWithItems,
+} from "@/app/(main)/dr-mariambourg/components/DoctorContent/types";
 
-export interface BiographieSection {
-  title: string;
-  items?: string[];
-  content?: Array<{
-    subtitle: string;
-    items: string[];
-  }>;
-}
-
-export const getBiography = () => {
+export const getBiography = (): Biography => {
   return {
-    name: siteData.doctor.fullName,
     introduction: {
       beginning: "Le Docteur",
       name: siteData.doctor.shortName,
@@ -22,39 +18,47 @@ export const getBiography = () => {
   };
 };
 
-export const getBiographieData = (): Record<string, BiographieSection> => {
+export const getBiographieData = (): Record<string, BiographySection> => {
+  const expertiseSection: SectionWithContent = {
+    title: "Expertise et spécialités",
+    content: [
+      {
+        subtitle: "Chirurgie du rachis",
+        items: siteData.expertiseDetails.rachis.items,
+      },
+      {
+        subtitle: "Prothèses de hanche et de genou",
+        items: [
+          ...siteData.expertiseDetails.hanche.items,
+          ...siteData.expertiseDetails.genou.items,
+        ],
+      },
+    ],
+  };
+
+  const trainingSection: SectionWithItems = {
+    title: "Titres et Formations",
+    items: siteData.doctor.training,
+  };
+
+  const societiesSection: SectionWithItems = {
+    title: "Sociétés savantes",
+    items: siteData.doctor.societies,
+  };
+
+  const informationSection: SectionWithItems = {
+    title: "Informations Pratiques",
+    items: [
+      "Inscrit au Conseil national de l'Ordre des médecins",
+      `N°RPPS : ${siteData.doctor.rppsNumber}`,
+      `Médecin conventionné ${siteData.doctor.sector}`,
+    ],
+  };
+
   return {
-    expertise: {
-      title: "Expertise et spécialités",
-      content: [
-        {
-          subtitle: "Chirurgie du rachis",
-          items: siteData.expertiseDetails.rachis.items,
-        },
-        {
-          subtitle: "Prothèses de hanche et de genou",
-          items: [
-            ...siteData.expertiseDetails.hanche.items,
-            ...siteData.expertiseDetails.genou.items,
-          ],
-        },
-      ],
-    },
-    training: {
-      title: "Titres et Formations",
-      items: siteData.doctor.training,
-    },
-    societies: {
-      title: "Sociétés savantes",
-      items: siteData.doctor.societies,
-    },
-    information: {
-      title: "Informations Pratiques",
-      items: [
-        "Inscrit au Conseil national de l'Ordre des médecins",
-        `N°RPPS : ${siteData.doctor.rppsNumber}`,
-        `Médecin conventionné ${siteData.doctor.sector}`,
-      ],
-    },
+    expertise: expertiseSection,
+    training: trainingSection,
+    societies: societiesSection,
+    information: informationSection,
   };
 };
