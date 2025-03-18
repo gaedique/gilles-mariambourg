@@ -1,4 +1,4 @@
-import ActionButton from "@/src/components/ui/CtaButton";
+import ActionButton from "@/src/ui/CtaButton";
 import { ArrowLeft, ExternalLink, FileText, Mail, Phone } from "lucide-react";
 import Head from "next/head";
 import React from "react";
@@ -16,7 +16,7 @@ const LegalNotice: React.FC = () => {
 
       <div className="mb-8">
         <ActionButton href="/" icon={ArrowLeft} variant="light" size="sm">
-          Retour à l'accueil
+          Retour à l&apos;accueil
         </ActionButton>
       </div>
 
@@ -70,11 +70,11 @@ const LegalNotice: React.FC = () => {
           </h2>
           <div className="bg-gray-50 p-4 rounded-lg shadow-sm">
             <p className="mb-4">
-              Le site est hébergé par : [Nom de l'hébergeur]
+              Le site est hébergé par : [Nom de l&apos;hébergeur]
               <br />
-              [Adresse de l'hébergeur]
+              [Adresse de l&apos;hébergeur]
               <br />
-              [Contact de l'hébergeur]
+              [Contact de l&apos;hébergeur]
             </p>
             <ActionButton
               href="[Site de l'hébergeur]"
@@ -83,7 +83,7 @@ const LegalNotice: React.FC = () => {
               external
               size="sm"
             >
-              Site de l'hébergeur
+              Site de l&apos;hébergeur
             </ActionButton>
           </div>
         </section>
@@ -93,9 +93,9 @@ const LegalNotice: React.FC = () => {
             3. Propriété Intellectuelle
           </h2>
           <p>
-            L'ensemble des contenus présents sur ce site (textes, images,
-            vidéos, graphismes, logos) est protégé par le droit d'auteur et la
-            propriété intellectuelle. Toute reproduction, représentation,
+            L&apos;ensemble des contenus présents sur ce site (textes, images,
+            vidéos, graphismes, logos) est protégé par le droit d&apos;auteur et
+            la propriété intellectuelle. Toute reproduction, représentation,
             modification ou diffusion sans autorisation préalable est interdite.
           </p>
         </section>
@@ -108,7 +108,7 @@ const LegalNotice: React.FC = () => {
             Les informations fournies sur ce site ont une vocation exclusivement
             informative et ne remplacent en aucun cas une consultation médicale.
             Le Dr Gilles Mariambourg ne saurait être tenu responsable des
-            conséquences d'une utilisation inappropriée des informations
+            conséquences d&apos;une utilisation inappropriée des informations
             contenues sur ce site.
           </p>
         </section>
@@ -139,9 +139,9 @@ const LegalNotice: React.FC = () => {
             6. Cookies
           </h2>
           <p>
-            Le site utilise des cookies pour améliorer l'expérience utilisateur.
-            Vous pouvez gérer vos préférences en matière de cookies via les
-            paramètres de votre navigateur.
+            Le site utilise des cookies pour améliorer l&apos;expérience
+            utilisateur. Vous pouvez gérer vos préférences en matière de cookies
+            via les paramètres de votre navigateur.
           </p>
         </section>
 
@@ -150,8 +150,8 @@ const LegalNotice: React.FC = () => {
             7. Respect de la Déontologie Médicale
           </h2>
           <p className="mb-4">
-            Le Dr Gilles Mariambourg s'engage à respecter le Code de Déontologie
-            Médicale.
+            Le Dr Gilles Mariambourg s&apos;engage à respecter le Code de
+            Déontologie Médicale.
           </p>
           <ActionButton
             href="https://www.conseil-national.medecin.fr"
@@ -159,7 +159,7 @@ const LegalNotice: React.FC = () => {
             variant="light"
             external
           >
-            Conseil National de l'Ordre des Médecins
+            Conseil National de l&apos;Ordre des Médecins
           </ActionButton>
         </section>
 
@@ -168,8 +168,8 @@ const LegalNotice: React.FC = () => {
             8. Contact
           </h2>
           <p className="mb-4">
-            Pour toute question relative aux mentions légales ou à l'utilisation
-            du site, vous pouvez nous contacter :
+            Pour toute question relative aux mentions légales ou à
+            l&apos;utilisation du site, vous pouvez nous contacter :
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <ActionButton
