@@ -1,4 +1,4 @@
-import ActionButton from "@/src/components/ui/CtaButton";
+import ActionButton from "@/src/ui/CtaButton";
 import { ArrowLeft, FileText, Mail, Phone } from "lucide-react";
 import Head from "next/head";
 import React from "react";
@@ -15,7 +15,7 @@ const PrivacyPolicy: React.FC = () => {
       </Head>
       <div className="mb-8">
         <ActionButton href="/" icon={ArrowLeft} variant="light" size="sm">
-          Retour à l'accueil
+          Retour à l&apos;accueil
         </ActionButton>
       </div>
 
@@ -67,7 +67,9 @@ const PrivacyPolicy: React.FC = () => {
             suivants :
           </p>
           <ul className="list-disc list-inside space-y-2 mb-4">
-            <li>Données d'identification : nom, prénom, date de naissance</li>
+            <li>
+              Données d&apos;identification : nom, prénom, date de naissance
+            </li>
             <li>Coordonnées : adresse postale, email, numéro de téléphone</li>
             <li>
               Données de santé : informations médicales nécessaires à votre
@@ -160,12 +162,12 @@ const PrivacyPolicy: React.FC = () => {
             (RGPD), vous disposez des droits suivants :
           </p>
           <ul className="list-disc list-inside space-y-2 mb-6">
-            <li>Droit d'accès à vos données</li>
+            <li>Droit d&apos;accès à vos données</li>
             <li>Droit de rectification</li>
-            <li>Droit à l'effacement</li>
+            <li>Droit à l&apos;effacement</li>
             <li>Droit à la limitation du traitement</li>
             <li>Droit à la portabilité des données</li>
-            <li>Droit d'opposition</li>
+            <li>Droit d&apos;opposition</li>
           </ul>
           <div className="space-y-4">
             <p className="font-semibold mb-4">
@@ -233,8 +235,8 @@ const PrivacyPolicy: React.FC = () => {
           </h2>
           <p className="mb-4">
             En cas de non-respect de vos droits, vous pouvez introduire une
-            réclamation auprès de la Commission Nationale de l'Informatique et
-            des Libertés (CNIL).
+            réclamation auprès de la Commission Nationale de l&apos;Informatique
+            et des Libertés (CNIL).
           </p>
           <ActionButton
             href="https://www.cnil.fr"

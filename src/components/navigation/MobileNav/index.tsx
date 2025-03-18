@@ -3,9 +3,9 @@ import { navigation } from "@/src/data/siteData";
 import { ChevronDown } from "lucide-react";
 import Link from "next/link";
 import { useRef } from "react";
+import { useMobileDropdown } from "../hooks/useMobileDropdown";
 import { NavLink } from "../NavLink";
 import { MobileNavProps } from "./types";
-import { useMobileDropdown } from "../../hooks/useMobileDropdown";
 
 const MobileNav = ({
   isMobileMenuOpen,

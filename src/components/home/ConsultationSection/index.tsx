@@ -1,8 +1,8 @@
 "use client";
+import { consultationInfo } from "@/src/data/siteData";
 import ScrollReveal from "@/src/ui/ScrollReveal";
 import SectionTitle from "@/src/ui/SectionTitle";
 import TexturedBackground from "@/src/ui/TexturedBackground";
-import { consultationInfo } from "@/src/data/siteData";
 import { useRef } from "react";
 import { ConsultationCard } from "./components/ConsultationCard";
 

@@ -1,12 +1,12 @@
 "use client";
+import DesktopNav from "@/src/components/navigation/DesktopNav";
+import MobileNav from "@/src/components/navigation/MobileNav";
 import { contact, doctor, meta } from "@/src/data/siteData";
 import { useEffect, useState } from "react";
-import DesktopNav from "./components/DesktopNav";
-import { Logo } from "./components/Logo";
-import MobileMenuButton from "./components/MobileMenuButton";
-import MobileNav from "./components/MobileNav";
-import { useDesktopDropdown } from "./hooks/useDesktopDropdown";
-import { useHeaderScroll } from "./hooks/useHeaderScroll";
+import { useDesktopDropdown } from "../../navigation/hooks/useDesktopDropdown";
+import { useHeaderScroll } from "../../navigation/hooks/useHeaderScroll";
+import { Logo } from "./Logo";
+import MobileMenuButton from "../../navigation/MobileMenuButton";
 
 const Header = () => {
   const { isScrolled, isMobileMenuOpen, setIsMobileMenuOpen } =

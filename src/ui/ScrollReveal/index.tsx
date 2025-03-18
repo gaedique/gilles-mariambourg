@@ -1,16 +1,7 @@
 "use client";
 
-import React, { ReactNode, useRef, useEffect, useState } from "react";
-
-interface ScrollRevealProps {
-  children: ReactNode;
-  className?: string;
-  threshold?: number;
-  rootMargin?: string;
-  triggerOnce?: boolean;
-  delay?: number;
-  duration?: number;
-}
+import { useEffect, useRef, useState } from "react";
+import { ScrollRevealProps } from "./types";
 
 export default function ScrollReveal({
   children,
@@ -19,10 +10,10 @@ export default function ScrollReveal({
   rootMargin = "0px",
   triggerOnce = true,
   delay = 0,
-  duration = 1250, // 1.25s like the example you referenced
+  duration = 1250, // 1.25s
 }: ScrollRevealProps) {
   const [isVisible, setIsVisible] = useState(false);
-  const elementRef = useRef<HTMLDivElement>(null); // Specifically HTMLDivElement
+  const elementRef = useRef<HTMLDivElement>(null);
   const hasTriggered = useRef(false);
 
   useEffect(() => {
