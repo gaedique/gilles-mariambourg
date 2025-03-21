@@ -10,7 +10,18 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  async rewrites() {
+    return [
+      {
+        source: "/LegalNotice",
+        destination: "/mentions-legales",
+      },
+      {
+        source: "/PrivacyPolicy",
+        destination: "/politique-de-confidentialite",
+      },
+    ];
+  },
 };
 
 export default nextConfig;

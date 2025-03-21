@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import BottomBar from "./components/BottomBar";
 import ContactSection from "./components/ContactSection";
 import InfoSection from "./components/InfoSection";
