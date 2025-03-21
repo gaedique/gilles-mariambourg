@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { useEffect, useMemo, useState } from "react";
 import { ImageCarouselProps } from "./types";
+import { useWindowSize } from "@/src/utils/clientOnly";
 
 export const ImageCarousel = ({
   specialties,
@@ -24,30 +25,18 @@ export const ImageCarousel = ({
     return "scale-110";
   }, [scrollProgress]);
 
+  const { width } = useWindowSize();
+
   // Update screen size based on window width
   useEffect(() => {
-    if (typeof window === "undefined") return;
-
-    const handleResize = () => {
-      const width = window.innerWidth;
-      if (width < 640) {
-        setScreenSize("mobile");
-      } else if (width < 1024) {
-        setScreenSize("tablet");
-      } else {
-        setScreenSize("desktop");
-      }
-    };
-
-    // Set initial screen size
-    handleResize();
-
-    // Add event listener
-    window.addEventListener("resize", handleResize);
-
-    // Clean up
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
+    if (width < 640) {
+      setScreenSize("mobile");
+    } else if (width < 1024) {
+      setScreenSize("tablet");
+    } else {
+      setScreenSize("desktop");
+    }
+  }, [width]);
 
   // Define a type for the specialty object
   type Specialty = {

@@ -7,6 +7,7 @@ import Script from "next/script";
 import { useEffect, useState } from "react";
 import ContactDetails from "./components/ContactDetails";
 import InteractiveMap from "./components/InteractiveMap";
+import { isClient } from "@/src/utils/clientOnly";
 
 const ContactSection = () => {
   const [prefersDark, setPrefersDark] = useState(false);
@@ -16,12 +17,14 @@ const ContactSection = () => {
 
   // Check for dark mode preference on component mount
   useEffect(() => {
-    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
-    setPrefersDark(mediaQuery.matches);
+    if (isClient()) {
+      const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+      setPrefersDark(mediaQuery.matches);
 
-    const handler = (e: MediaQueryListEvent) => setPrefersDark(e.matches);
-    mediaQuery.addEventListener("change", handler);
-    return () => mediaQuery.removeEventListener("change", handler);
+      const handler = (e: MediaQueryListEvent) => setPrefersDark(e.matches);
+      mediaQuery.addEventListener("change", handler);
+      return () => mediaQuery.removeEventListener("change", handler);
+    }
   }, []);
 
   // Parse opening hours safely
