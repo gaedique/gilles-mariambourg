@@ -12,8 +12,9 @@ export const NavLink = ({
 
   // For anchor links, use a regular <a> tag
   if (isAnchorLink) {
+    console.log("NavLink rendering with href:", href);
     return (
-      <a
+      <Link
         href={href}
         className={`text-gray-900 hover:text-brand-bay-of-many-600 transition-colors ${className}`}
         onClick={(e) => {
@@ -30,7 +31,7 @@ export const NavLink = ({
         }}
       >
         {children}
-      </a>
+      </Link>
     );
   }
 

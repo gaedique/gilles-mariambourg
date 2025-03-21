@@ -2,9 +2,8 @@
 import CtaButton from "@/src/ui/CtaButton";
 import { ArrowLeft, FileText, Mail, Phone } from "lucide-react";
 import Head from "next/head";
-import React from "react";
 
-const PrivacyPolicy: React.FC = () => {
+const PrivacyPolicy = () => {
   return (
     <div className="container mx-auto px-4 py-8 max-w-4xl">
       <Head>

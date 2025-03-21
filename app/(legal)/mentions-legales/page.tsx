@@ -2,9 +2,8 @@
 import CtaButton from "@/src/ui/CtaButton";
 import { ArrowLeft, ExternalLink, FileText, Mail, Phone } from "lucide-react";
 import Head from "next/head";
-import React from "react";
 
-const LegalNotice: React.FC = () => {
+const LegalNotice = () => {
   return (
     <div className="container mx-auto px-4 py-8 max-w-4xl">
       <Head>
@@ -126,7 +125,7 @@ const LegalNotice: React.FC = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <CtaButton
-              href="/politique-confidentialite"
+              href="/politique-de-confidentialite"
               icon={FileText}
               variant="dark"
             >
