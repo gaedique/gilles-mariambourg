@@ -1,4 +1,53 @@
+// import Link from "next/link";
+// import { NavLinkProps } from "./types";
+
+// export const NavLink = ({
+//   href,
+//   className = "",
+//   children,
+//   onClick,
+// }: NavLinkProps) => {
+//   // Check if it's an anchor link (starts with # or contains /#)
+//   const isAnchorLink = href.startsWith("#") || href.includes("/#");
+
+//   // For anchor links, use a regular <a> tag
+//   if (isAnchorLink) {
+//     console.log("NavLink rendering with href:", href);
+//     return (
+//       <Link
+//         href={href}
+//         className={`text-gray-900 hover:text-brand-bay-of-many-600 transition-colors ${className}`}
+//         onClick={(e) => {
+//           // If it's an anchor on the current page, implement smooth scrolling
+//           if (window.location.pathname === "/" || href.includes("/#")) {
+//             e.preventDefault();
+//             const targetId = href.replace(/.*#/, "");
+//             const targetElement = document.getElementById(targetId);
+//             if (targetElement) {
+//               targetElement.scrollIntoView({ behavior: "smooth" });
+//             }
+//             if (onClick) onClick();
+//           }
+//         }}
+//       >
+//         {children}
+//       </Link>
+//     );
+//   }
+
+//   // For regular page links, use Next.js Link component
+//   return (
+//     <Link
+//       href={href}
+//       className={`text-gray-900 hover:text-brand-bay-of-many-600 transition-colors ${className}`}
+//       onClick={onClick}
+//     >
+//       {children}
+//     </Link>
+//   );
+// };
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import { NavLinkProps } from "./types";
 
 export const NavLink = ({
@@ -7,31 +56,53 @@ export const NavLink = ({
   children,
   onClick,
 }: NavLinkProps) => {
+  // State to track if we're on the client side
+  const [isMounted, setIsMounted] = useState(false);
+
+  // Run once after component mounts (client-side only)
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
   // Check if it's an anchor link (starts with # or contains /#)
   const isAnchorLink = href.startsWith("#") || href.includes("/#");
 
-  // For anchor links, use a regular <a> tag
+  // For anchor links
   if (isAnchorLink) {
-    console.log("NavLink rendering with href:", href);
+    // Extract the anchor ID
+    const anchorId = href.includes("#")
+      ? href.split("#")[1]
+      : href.substring(1);
+
+    // Determine if we're on the home page (only after mounting)
+    const isHomePage = isMounted && window.location.pathname === "/";
+
+    // Handle click for anchor links
+    const handleAnchorClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+      e.preventDefault();
+
+      if (isHomePage) {
+        // If we're already on home page, scroll to the element
+        const targetElement = document.getElementById(anchorId);
+        if (targetElement) {
+          targetElement.scrollIntoView({ behavior: "smooth" });
+        }
+      } else {
+        // If we're not on home page, navigate programmatically to home + anchor
+        window.location.href = `/#${anchorId}`;
+      }
+
+      if (onClick) onClick();
+    };
+
     return (
-      <Link
-        href={href}
+      <a
+        href={`/#${anchorId}`}
         className={`text-gray-900 hover:text-brand-bay-of-many-600 transition-colors ${className}`}
-        onClick={(e) => {
-          // If it's an anchor on the current page, implement smooth scrolling
-          if (window.location.pathname === "/" || href.includes("/#")) {
-            e.preventDefault();
-            const targetId = href.replace(/.*#/, "");
-            const targetElement = document.getElementById(targetId);
-            if (targetElement) {
-              targetElement.scrollIntoView({ behavior: "smooth" });
-            }
-            if (onClick) onClick();
-          }
-        }}
+        onClick={handleAnchorClick}
       >
         {children}
-      </Link>
+      </a>
     );
   }
 
