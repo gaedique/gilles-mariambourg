@@ -150,7 +150,7 @@ export const contact = {
 export const navigation = {
   main: [
     { label: "Accueil", path: "/" },
-    { label: "Actualité", path: "/#actualite" },
+    { label: "Actualité", path: "/#endoscopie-biportale-rachidienne" },
     {
       label: "Expertise",
       path: "/#expertise",
