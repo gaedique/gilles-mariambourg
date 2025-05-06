@@ -1,5 +1,3 @@
-// src/data/spineData.ts
-
 export const getSpineIntroduction = () => {
   return {
     title: "Chirurgie de la Colonne Vertébrale",

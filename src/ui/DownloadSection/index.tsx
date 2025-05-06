@@ -1,18 +1,7 @@
 import { motion } from "framer-motion";
 import TexturedBackground from "@/src/ui/TexturedBackground";
 import { ArrowDown } from "lucide-react";
-
-interface DownloadItem {
-  title: string;
-  description: string;
-  fileName: string;
-}
-
-interface DownloadSectionProps {
-  title: string;
-  subtitle: string;
-  downloads: DownloadItem[];
-}
+import { DownloadSectionProps } from "./types";
 
 const DownloadSection = ({
   title,

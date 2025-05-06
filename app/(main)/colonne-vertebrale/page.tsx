@@ -2,17 +2,17 @@
 
 import Layout from "@/src/components/layout/LayoutWrapper";
 import Breadcrumb from "@/src/components/navigation/Breadcrumb";
-import { createRef, RefObject, useEffect, useMemo, useState } from "react";
-import SpineHero from "./components/SpineHero";
-import SpineContent from "./components/SpineContent";
-import SpineSidebar from "./components/SpineSidebar";
-import DownloadSection from "@/src/ui/DownloadSection";
 import {
   getSpineData,
-  getSpineIntroduction,
   getSpineDownloads,
+  getSpineIntroduction,
 } from "@/src/data/spineData";
+import DownloadSection from "@/src/ui/DownloadSection";
 import { SecondaryLink } from "@/src/ui/SecondaryLink";
+import { createRef, RefObject, useEffect, useMemo, useState } from "react";
+import SpineContent from "./components/SpineContent";
+import SpineHero from "./components/SpineHero";
+import SpineSidebar from "./components/SpineSidebar";
 
 const SpinePage = () => {
   const [activeSection, setActiveSection] = useState("overview");

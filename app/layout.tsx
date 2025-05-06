@@ -3,7 +3,7 @@ import { Manrope, Nunito_Sans, Overpass } from "next/font/google";
 
 import "@/src/styles/globals.css";
 
-import { cn } from "@/src/cn";
+import { cn } from "@/src/utils/cn";
 
 const headingFont = Manrope({
   subsets: ["latin"],

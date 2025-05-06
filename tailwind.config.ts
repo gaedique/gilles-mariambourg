@@ -38,18 +38,6 @@ export default {
       },
       // Animation keyframes
       keyframes: {
-        "slide-up-fade": {
-          "0%": { opacity: "0", transform: "translateY(20px)" },
-          "100%": { opacity: "1", transform: "translateY(0)" },
-        },
-        "scale-in": {
-          "0%": { opacity: "0", transform: "scale(0.9)" },
-          "100%": { opacity: "1", transform: "scale(1)" },
-        },
-        fadeIn: {
-          "0%": { opacity: "0" },
-          "100%": { opacity: "1" },
-        },
         triangleStroke: {
           "0%": { strokeDashoffset: "90" },
           "100%": { strokeDashoffset: "0" },
@@ -57,14 +45,6 @@ export default {
         smallScale: {
           "100%": { transform: "scale(1)" },
           "0%": { transform: "scale(1.5)" },
-        },
-        "pulse-subtle": {
-          "0%, 100%": { transform: "scale(1) translate(25%, 0)" },
-          "50%": { transform: "scale(1.02) translate(25%, 0)" },
-        },
-        "pulse-subtle-delayed": {
-          "0%, 100%": { transform: "scale(1)" },
-          "50%": { transform: "scale(1.015)" },
         },
         "phone-ring": {
           "0%, 100%": { transform: "rotate(-10deg)" },
@@ -79,11 +59,6 @@ export default {
       },
       // Animation utilities
       animation: {
-        "slide-up-fade": "slide-up-fade 0.5s ease-out forwards",
-        "scale-in": "scale-in 0.5s ease-out forwards",
-        "pulse-subtle": "pulse-subtle 6s ease-in-out infinite",
-        "pulse-subtle-delayed":
-          "pulse-subtle-delayed 7s ease-in-out 1.5s infinite",
         "phone-ringing": "phone-ring 0.5s ease-in-out 2",
         heartbeat: "heartbeat 2s ease-in-out infinite 1s",
       },
