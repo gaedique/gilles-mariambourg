@@ -1,5 +1,3 @@
-// src/data/hipData.ts
-
 export const getHipIntroduction = () => {
   return {
     title: "Prothèse de Hanche",
@@ -25,6 +23,12 @@ export const getHipDownloads = () => {
     subtitle:
       "Téléchargez nos fiches d'information détaillées sur la prothèse de hanche et les soins associés.",
     downloads: [
+      {
+        title: "Information Préopératoire",
+        description:
+          "Document complet expliquant la procédure de prothèse totale de hanche, les risques potentiels et les résultats attendus.",
+        fileName: "information-preoperatoire-pth.pdf",
+      },
       {
         title: "Préparation à la Chirurgie",
         description:

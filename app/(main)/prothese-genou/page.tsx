@@ -2,16 +2,16 @@
 
 import Layout from "@/src/components/layout/LayoutWrapper";
 import Breadcrumb from "@/src/components/navigation/Breadcrumb";
-import { createRef, RefObject, useEffect, useMemo, useState } from "react";
-import KneeHero from "./components/KneeHero";
-import KneeContent from "./components/KneeContent";
-import KneeSidebar from "./components/KneeSidebar";
-import DownloadSection from "@/src/ui/DownloadSection";
 import {
   getKneeData,
-  getKneeIntroduction,
   getKneeDownloads,
+  getKneeIntroduction,
 } from "@/src/data/kneeData";
+import DownloadSection from "@/src/ui/DownloadSection";
+import { createRef, RefObject, useEffect, useMemo, useState } from "react";
+import KneeContent from "./components/KneeContent";
+import KneeHero from "./components/KneeHero";
+import KneeSidebar from "./components/KneeSidebar";
 
 const KneePage = () => {
   const [activeSection, setActiveSection] = useState("overview");

@@ -2,16 +2,16 @@
 
 import Layout from "@/src/components/layout/LayoutWrapper";
 import Breadcrumb from "@/src/components/navigation/Breadcrumb";
-import { createRef, RefObject, useEffect, useMemo, useState } from "react";
-import HipHero from "./components/HipHero";
-import HipContent from "./components/HipContent";
-import HipSidebar from "./components/HipSidebar";
-import DownloadSection from "@/src/ui/DownloadSection";
 import {
   getHipData,
-  getHipIntroduction,
   getHipDownloads,
+  getHipIntroduction,
 } from "@/src/data/hipData";
+import DownloadSection from "@/src/ui/DownloadSection";
+import { createRef, RefObject, useEffect, useMemo, useState } from "react";
+import HipContent from "./components/HipContent";
+import HipHero from "./components/HipHero";
+import HipSidebar from "./components/HipSidebar";
 
 const HipPage = () => {
   const [activeSection, setActiveSection] = useState("overview");

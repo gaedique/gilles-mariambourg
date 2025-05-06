@@ -1,19 +1,8 @@
 import Link from "next/link";
-import { ReactNode } from "react";
+import { SecondaryLinkProps } from "./types";
 
 // Video icon component - replace with your actual import
 import { Video } from "lucide-react";
-
-type SecondaryLinkProps = {
-  href: string;
-  children: ReactNode;
-  ariaLabel?: string;
-  title?: string;
-  rel?: string;
-  variant?: "line" | "icon";
-  iconType?: "video" | "arrow"; // can be expanded for other icons
-  className?: string;
-};
 
 export const SecondaryLink = ({
   href,

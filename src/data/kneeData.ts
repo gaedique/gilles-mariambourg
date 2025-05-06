@@ -1,5 +1,3 @@
-// src/data/kneeData.ts
-
 export const getKneeIntroduction = () => {
   return {
     title: "Prothèse de Genou",
