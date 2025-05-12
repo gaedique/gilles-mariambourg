@@ -1,31 +1,36 @@
 import clsx from "clsx";
+import { FileText } from "lucide-react";
 
 interface ContentItem {
   subtitle: string;
   items: string[];
 }
 
-interface SpineSection {
+interface MedicalSection {
   title: string;
   content?: ContentItem[];
   items?: string[];
 }
 
-interface SpineSidebarProps {
-  spineData: Record<string, SpineSection>;
+interface MedicalSidebarProps {
+  title: string; // Ex: "Prothèse de la hanche"
+  data: Record<string, MedicalSection>;
   activeSection: string;
   scrollToSection: (key: string) => void;
   isScrolled: boolean;
+  includeDownloadLink?: boolean;
 }
 
-const SpineSidebar = ({
-  spineData,
+const MedicalSidebar = ({
+  title,
+  data,
   activeSection,
   scrollToSection,
   isScrolled,
-}: SpineSidebarProps) => {
+  includeDownloadLink = true,
+}: MedicalSidebarProps) => {
   return (
-    <aside className="hidden lg:block lg:col-span-3">
+    <aside className="hidden lg:block lg:col-span-3 pb-32">
       <div
         className={`sticky ${
           isScrolled ? "top-32" : "top-24"
@@ -36,11 +41,11 @@ const SpineSidebar = ({
             <div className="flex items-center gap-3 mb-6">
               <div className="w-3 h-3 bg-brand-bay-of-many-600 rounded-full animate-pulse" />
               <h2 className="text-xs uppercase tracking-wider text-brand-bay-of-many-600 font-accent font-medium">
-                Guide Rachis
+                {title}
               </h2>
             </div>
             <nav className="space-y-4">
-              {Object.entries(spineData).map(([key, section]) => (
+              {Object.entries(data).map(([key, section]) => (
                 <button
                   key={key}
                   onClick={() => scrollToSection(key)}
@@ -65,22 +70,25 @@ const SpineSidebar = ({
                 </button>
               ))}
 
-              {/* Additional navigation item for Fiches d'Information */}
-              <button
-                onClick={() => {
-                  const downloadSection =
-                    document.getElementById("fiches-information");
-                  if (downloadSection) {
-                    downloadSection.scrollIntoView({ behavior: "smooth" });
-                  }
-                }}
-                className="group w-full text-left transition-all duration-300 text-slate-500 hover:text-slate-800"
-              >
-                <span className="text-sm uppercase tracking-wider font-accent">
-                  Fiches d&apos;Information
-                </span>
-                <span className="block h-px w-8 mt-2 transition-all duration-300 bg-slate-300 scale-x-0 group-hover:scale-x-75" />
-              </button>
+              {includeDownloadLink && (
+                <>
+                  <div className="border-t border-slate-200 my-2" />
+                  <button
+                    onClick={() => scrollToSection("downloads")}
+                    className={clsx(
+                      "group w-full text-left transition-all duration-300 px-3 py-2 rounded-md border",
+                      activeSection === "downloads"
+                        ? "bg-rose-50 border-rose-200 text-rose-600 font-semibold"
+                        : "border-transparent hover:border-rose-100 hover:bg-rose-50 text-slate-500"
+                    )}
+                  >
+                    <span className="flex items-center gap-2 text-sm uppercase tracking-wider font-accent">
+                      <FileText className="w-4 h-4 text-brand-bay-of-many-600" />
+                      Fiche d&apos;Information
+                    </span>
+                  </button>
+                </>
+              )}
             </nav>
           </div>
         </div>
@@ -89,4 +97,4 @@ const SpineSidebar = ({
   );
 };
 
-export default SpineSidebar;
+export default MedicalSidebar;

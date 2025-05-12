@@ -1,6 +1,9 @@
 "use client";
 
 import Layout from "@/src/components/layout/LayoutWrapper";
+import MedicalContent from "@/src/components/medical/MedicalContent";
+import MedicalHero from "@/src/components/medical/MedicalHero";
+import MedicalSidebar from "@/src/components/medical/MedicalSidebar";
 import Breadcrumb from "@/src/components/navigation/Breadcrumb";
 import {
   getHipData,
@@ -9,9 +12,6 @@ import {
 } from "@/src/data/hipData";
 import DownloadSection from "@/src/ui/DownloadSection";
 import { createRef, RefObject, useEffect, useMemo, useState } from "react";
-import HipContent from "./components/HipContent";
-import HipHero from "./components/HipHero";
-import HipSidebar from "./components/HipSidebar";
 
 const HipPage = () => {
   const [activeSection, setActiveSection] = useState("overview");
@@ -21,14 +21,17 @@ const HipPage = () => {
   const hipData = useMemo(() => getHipData(), []);
   const hipDownloads = useMemo(() => getHipDownloads(), []);
 
-  const sectionRefs = useMemo(
-    () =>
-      Object.keys(hipData).reduce((acc, key) => {
-        acc[key] = createRef<HTMLElement>();
-        return acc;
-      }, {} as Record<string, RefObject<HTMLElement | null>>),
-    [hipData]
-  );
+  const sectionRefs = useMemo(() => {
+    // Create the references for each section in hipData
+    const refs = Object.keys(hipData).reduce((acc, key) => {
+      acc[key] = createRef<HTMLElement>();
+      return acc;
+    }, {} as Record<string, RefObject<HTMLElement | null>>);
+
+    // Adding a ref for the downloads section
+    refs["downloads"] = createRef<HTMLElement>();
+    return refs;
+  }, [hipData]);
 
   const scrollToSection = (key: string) => {
     sectionRefs[key]?.current?.scrollIntoView({ behavior: "smooth" });
@@ -81,14 +84,19 @@ const HipPage = () => {
       <Breadcrumb className="mt-[calc(var(--navbar-height)+32px)] lg:mt-[calc(var(--navbar-height)+48px)]" />
 
       {/* Hero Section */}
-      <HipHero introduction={hipIntroduction} />
+      <MedicalHero
+        data={hipIntroduction}
+        imageSrc="/images/hip-prothesis.png"
+        imageAlt="Prothèse de la hanche"
+      />
 
       {/* Content Section */}
       <section className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-12 gap-8">
           {/* Navigation Sidebar */}
-          <HipSidebar
-            hipData={hipData}
+          <MedicalSidebar
+            title="Prothèse de la hanche"
+            data={hipData}
             activeSection={activeSection}
             scrollToSection={scrollToSection}
             isScrolled={isScrolled}
@@ -102,14 +110,16 @@ const HipPage = () => {
           {/* Main Content */}
           <div className="col-span-12 lg:col-span-8 pb-24">
             {/* Main Hip Content */}
-            <HipContent hipData={hipData} sectionRefs={sectionRefs} />
+            <MedicalContent data={hipData} sectionRefs={sectionRefs} />
 
             {/* Downloadable Resources */}
-            <DownloadSection
-              title={hipDownloads.title}
-              subtitle={hipDownloads.subtitle}
-              downloads={hipDownloads.downloads}
-            />
+            <section ref={sectionRefs["downloads"]} data-section="downloads">
+              <DownloadSection
+                title={hipDownloads.title}
+                subtitle={hipDownloads.subtitle}
+                downloads={hipDownloads.downloads}
+              />
+            </section>
           </div>
         </div>
       </section>

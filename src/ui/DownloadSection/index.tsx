@@ -1,5 +1,6 @@
-import { motion } from "framer-motion";
 import TexturedBackground from "@/src/ui/TexturedBackground";
+import clsx from "clsx";
+import { motion } from "framer-motion";
 import { ArrowDown } from "lucide-react";
 import { DownloadSectionProps } from "./types";
 
@@ -8,6 +9,9 @@ const DownloadSection = ({
   subtitle,
   downloads,
 }: DownloadSectionProps) => {
+  // Have we a single download ?
+  const isSingleDownload = downloads.length <= 1;
+
   return (
     <motion.section
       className="mb-24 scroll-mt-32"
@@ -21,11 +25,21 @@ const DownloadSection = ({
 
       <p className="text-slate-600 mb-12">{subtitle}</p>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div
+        className={clsx(
+          isSingleDownload
+            ? "grid-cols-1"
+            : "grid-cols-1 md:grid-cols-2 lg:grid-cols-3",
+          "grid gap-6"
+        )}
+      >
         {downloads.map((item, idx) => (
           <div
             key={idx}
-            className="relative rounded-lg overflow-hidden p-6 shadow-sm border border-brand-bay-of-many-100/40 h-full flex flex-col"
+            className={clsx(
+              "relative rounded-lg overflow-hidden p-6 shadow-sm border border-brand-bay-of-many-100/40 h-full flex flex-col",
+              isSingleDownload && "max-w-none"
+            )}
           >
             {/* TexturedBackground for download cards */}
             <div className="absolute inset-0">

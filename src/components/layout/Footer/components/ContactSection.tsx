@@ -1,5 +1,5 @@
+import { contact, doctor } from "@/src/data/siteData";
 import CtaButton from "@/src/ui/CtaButton";
-import { doctor, contact } from "@/src/data/siteData";
 import { Phone } from "lucide-react";
 
 const ContactSection = () => (
@@ -8,7 +8,7 @@ const ContactSection = () => (
     <p className="text-brand-bay-of-many-100 text-sm">{doctor.title}</p>
     <div className="flex flex-col gap-3 sm:gap-4">
       <CtaButton
-        href="https://www.doctolib.fr"
+        href="https://www.doctolib.fr/chirurgien-orthopediste/castres/gilles-mariambourg-castres"
         external
         variant="dark"
         size="md"

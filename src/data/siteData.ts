@@ -128,7 +128,8 @@ export const contact = {
   },
   details: {
     phone: "05 63 71 88 04",
-    doctolib: "https://www.doctolib.fr",
+    doctolib:
+      "https://www.doctolib.fr/chirurgien-orthopediste/castres/gilles-mariambourg-castres",
   },
   hours: {
     regular: {
@@ -347,7 +348,8 @@ export const newsSection = {
     "Cicatrices minimales",
   ],
   ctaText: "Découvrir",
-  ctaLink: "/endoscopie-biportale-rachidienne",
+  ctaLink:
+    "https://www.elsan.care/fr/presse/la-polyclinique-du-sidobre-revolutionne-la-chirurgie-du-dos-avec-lendoscopie-biportale",
   ctaVideo: "Regarder la vidéo",
   thumbnailUrl: "/images/gilles_thumbnail.jpg",
   metaDescription:
