@@ -1,6 +1,9 @@
 "use client";
 
 import Layout from "@/src/components/layout/LayoutWrapper";
+import MedicalContent from "@/src/components/medical/MedicalContent";
+import MedicalHero from "@/src/components/medical/MedicalHero";
+import MedicalSidebar from "@/src/components/medical/MedicalSidebar";
 import Breadcrumb from "@/src/components/navigation/Breadcrumb";
 import {
   getSpineData,
@@ -8,11 +11,8 @@ import {
   getSpineIntroduction,
 } from "@/src/data/spineData";
 import DownloadSection from "@/src/ui/DownloadSection";
-import { SecondaryLink } from "@/src/ui/SecondaryLink";
 import { createRef, RefObject, useEffect, useMemo, useState } from "react";
-import SpineContent from "./components/SpineContent";
-import SpineHero from "./components/SpineHero";
-import SpineSidebar from "./components/SpineSidebar";
+import TechniqueHighlight from "../../../src/components/medical/TechniqueHighlight";
 
 const SpinePage = () => {
   const [activeSection, setActiveSection] = useState("overview");
@@ -22,14 +22,17 @@ const SpinePage = () => {
   const spineData = useMemo(() => getSpineData(), []);
   const spineDownloads = useMemo(() => getSpineDownloads(), []);
 
-  const sectionRefs = useMemo(
-    () =>
-      Object.keys(spineData).reduce((acc, key) => {
-        acc[key] = createRef<HTMLElement>();
-        return acc;
-      }, {} as Record<string, RefObject<HTMLElement | null>>),
-    [spineData]
-  );
+  const sectionRefs = useMemo(() => {
+    // Create the references for each section in kneeData
+    const refs = Object.keys(spineData).reduce((acc, key) => {
+      acc[key] = createRef<HTMLElement>();
+      return acc;
+    }, {} as Record<string, RefObject<HTMLElement | null>>);
+
+    // Adding a ref for the downloads section
+    refs["downloads"] = createRef<HTMLElement>();
+    return refs;
+  }, [spineData]);
 
   const scrollToSection = (key: string) => {
     sectionRefs[key]?.current?.scrollIntoView({ behavior: "smooth" });
@@ -82,14 +85,19 @@ const SpinePage = () => {
       <Breadcrumb className="mt-[calc(var(--navbar-height)+32px)] lg:mt-[calc(var(--navbar-height)+48px)]" />
 
       {/* Hero Section */}
-      <SpineHero introduction={spineIntroduction} />
+      <MedicalHero
+        data={spineIntroduction}
+        imageSrc="/images/spine.png"
+        imageAlt="chirurgie du rachis"
+      />
 
       {/* Content Section */}
       <section className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-12 gap-8">
           {/* Navigation Sidebar */}
-          <SpineSidebar
-            spineData={spineData}
+          <MedicalSidebar
+            title="Chirurgie du Rachis"
+            data={spineData}
             activeSection={activeSection}
             scrollToSection={scrollToSection}
             isScrolled={isScrolled}
@@ -103,30 +111,19 @@ const SpinePage = () => {
           {/* Main Content */}
           <div className="col-span-12 lg:col-span-8 pb-24">
             {/* Link to Endoscopic Technique */}
-            <div className="mb-12 p-6 bg-brand-bay-of-many-50/80 rounded-lg border border-brand-bay-of-many-100/60 shadow-sm">
-              <h3 className="text-xl font-medium font-heading text-slate-800 mb-3">
-                Technique avancée : Endoscopie Biportale Rachidienne
-              </h3>
-              <p className="text-slate-600 mb-4">
-                Dr. Mariambourg pratique désormais l&apos;endoscopie biportale
-                rachidienne, une technique chirurgicale mini-invasive de pointe
-                offrant de nombreux avantages pour le traitement des pathologies
-                de la colonne vertébrale.
-              </p>
-              <SecondaryLink href="/endoscopie-biportale" variant="line">
-                En savoir plus sur cette technique innovante
-              </SecondaryLink>
-            </div>
+            <TechniqueHighlight />
 
             {/* Main Spine Content */}
-            <SpineContent spineData={spineData} sectionRefs={sectionRefs} />
+            <MedicalContent data={spineData} sectionRefs={sectionRefs} />
 
             {/* Downloadable Resources */}
-            <DownloadSection
-              title={spineDownloads.title}
-              subtitle={spineDownloads.subtitle}
-              downloads={spineDownloads.downloads}
-            />
+            <section ref={sectionRefs["downloads"]} data-section="downloads">
+              <DownloadSection
+                title={spineDownloads.title}
+                subtitle={spineDownloads.subtitle}
+                downloads={spineDownloads.downloads}
+              />
+            </section>
           </div>
         </div>
       </section>

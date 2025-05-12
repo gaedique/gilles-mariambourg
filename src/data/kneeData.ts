@@ -12,7 +12,6 @@ export const getKneeIntroduction = () => {
     },
     details: [
       "L'arthrose du genou et d'autres conditions dégénératives affectent des millions de personnes à travers le monde, limitant considérablement leur mobilité et leur qualité de vie. La prothèse de genou, ou arthroplastie, représente une solution chirurgicale avancée qui a transformé le traitement de ces pathologies.",
-      "Notre approche combine des évaluations préopératoires minutieuses, des techniques chirurgicales de pointe et des protocoles de réhabilitation personnalisés pour offrir à nos patients les meilleurs résultats possibles et un retour rapide à une vie active.",
     ],
   };
 };
@@ -21,25 +20,13 @@ export const getKneeDownloads = () => {
   return {
     title: "Fiches d'Information",
     subtitle:
-      "Téléchargez nos fiches d'information détaillées sur la prothèse de genou et les soins associés.",
+      "Téléchargez notre fiche d'information préopératoire sur la prothèse totale de genou et les soins associés.",
     downloads: [
       {
-        title: "Guide Pré-opératoire",
+        title: "Information Préopératoire",
         description:
-          "Tout ce que vous devez savoir pour vous préparer à une chirurgie de prothèse de genou.",
-        fileName: "guide-preoperatoire-prothese-genou.pdf",
-      },
-      {
-        title: "Programme de Rééducation",
-        description:
-          "Programme complet d'exercices et recommandations pour optimiser votre récupération après une prothèse de genou.",
-        fileName: "reeducation-prothese-genou.pdf",
-      },
-      {
-        title: "Vivre avec une Prothèse de Genou",
-        description:
-          "Conseils pratiques pour adapter votre quotidien et préserver votre prothèse à long terme.",
-        fileName: "vivre-avec-prothese-genou.pdf",
+          "Document complet expliquant la procédure de prothèse totale de hanche, les risques potentiels et les résultats attendus.",
+        fileName: "information-preoperatoire-ptg.pdf",
       },
     ],
   };
@@ -48,186 +35,128 @@ export const getKneeDownloads = () => {
 export const getKneeData = () => {
   return {
     overview: {
-      title: "Aperçu Général",
+      title: "De quoi s'agit-il ?",
       items: [
-        "La prothèse de genou est une intervention chirurgicale qui consiste à remplacer les surfaces articulaires endommagées du genou par des implants artificiels, généralement composés de métal et de polyéthylène.",
-        "Cette procédure est principalement indiquée pour soulager la douleur et restaurer la fonction chez les patients souffrant d'arthrose avancée ou d'autres pathologies dégénératives du genou.",
-        "Selon la localisation des lésions, l'intervention peut concerner l'ensemble de l'articulation (prothèse totale) ou seulement une partie (prothèse unicompartimentale).",
-        "L'arthroplastie du genou figure parmi les chirurgies orthopédiques les plus réussies, avec un taux de satisfaction des patients supérieur à 90% et une durée de vie des implants pouvant dépasser 15 à 20 ans.",
+        "La prothèse totale de genou est une intervention chirurgicale qui a pour but de remplacer les surfaces articulaires du genou (fémur et tibia, parfois rotule) par un implant chirurgical ou prothèse.",
+        "Les causes de l’atteinte articulaire sont les plus souvent l’arthrose, et plus rarement un rhumatisme articulaire, une fracture ou une rupture ligamentaire ancienne...",
+        "L’évolution en l’absence de traitement est la persistance ou l’aggravation des douleurs.",
+        "Lorsque le traitement médical n’est plus efficace, une chirurgie avec pose d’une prothèse totale de genou est possible.",
       ],
     },
-    conditions: {
-      title: "Indications",
-      content: [
-        {
-          subtitle: "Pathologies Dégénératives",
-          items: [
-            "Arthrose Primaire : Usure progressive du cartilage articulaire liée à l'âge et aux facteurs génétiques.",
-            "Arthrose Post-traumatique : Dégénérescence articulaire faisant suite à des traumatismes (fractures, lésions ligamentaires, etc.).",
-            "Arthrite Rhumatoïde : Maladie auto-immune causant une inflammation chronique des articulations.",
-            "Arthropathies Microcristallines : Comme la goutte ou la chondrocalcinose, qui peuvent conduire à une destruction articulaire.",
-          ],
-        },
-        {
-          subtitle: "Déformations",
-          items: [
-            "Genu Varum : Déformation en « jambes arquées » où les genoux s'écartent l'un de l'autre.",
-            "Genu Valgum : Déformation en « genoux cagneux » où les genoux se rapprochent l'un de l'autre.",
-            "Déformations Post-traumatiques : Mauvaise consolidation après fracture affectant l'alignement du membre inférieur.",
-          ],
-        },
-        {
-          subtitle: "Autres Indications",
-          items: [
-            "Nécrose Aseptique des Condyles Fémoraux : Mort tissulaire locale due à une mauvaise circulation sanguine.",
-            "Échec d'Ostéotomie : Lorsqu'une intervention préalable de réalignement osseux n'a pas donné les résultats escomptés.",
-            "Séquelles de Fractures Articulaires : Irrégularités persistantes des surfaces articulaires après guérison d'une fracture.",
-          ],
-        },
+    disclaimer: {
+      title: "Considérations importantes",
+      items: [
+        "Les informations présentées sur cette page sont fournies à titre informatif et ne peuvent remplacer une consultation médicale personnalisée.",
+        "En accord avec votre chirurgien et selon la balance bénéfice-risque, il vous sera proposé une prothèse totale de genou. Les alternatives à cette intervention vous seront expliquées en détail par le chirurgien.",
+        "Il va de soi que votre chirurgien pourra, le cas échéant et en fonction des découvertes peropératoires ou d'une difficulté rencontrée, procéder à une autre technique jugée par lui plus profitable à votre cas spécifique.",
       ],
     },
     diagnosis: {
-      title: "Évaluation Préopératoire",
+      title: "Avant le traitement",
       content: [
         {
-          subtitle: "Consultation Initiale",
+          subtitle: "Imagerie",
           items: [
-            "Anamnèse Complète : Historique médical, antécédents chirurgicaux, allergies, médications actuelles et évaluation de la douleur.",
-            "Examen Clinique : Évaluation de la mobilité, de la stabilité, de l'alignement du membre inférieur et de la force musculaire.",
-            "Évaluation Fonctionnelle : Analyse de la marche et impact des symptômes sur les activités quotidiennes.",
-            "Discussion des Attentes : Clarification des résultats attendus et des limitations post-opératoires.",
-          ],
-        },
-        {
-          subtitle: "Examens Complémentaires",
-          items: [
-            "Radiographies : Vues standards (face, profil, défilé fémoro-patellaire) et clichés en charge pour évaluer l'alignement.",
-            "IRM : Pour visualiser précisément l'état du cartilage, des ménisques et des ligaments en cas de doute diagnostique.",
-            "Scanner : Parfois nécessaire pour planifier précisément l'intervention, notamment pour les cas complexes.",
-            "Bilan Biologique : Recherche d'infection ou d'inflammation, évaluation de l'état général en vue de l'anesthésie.",
-          ],
-        },
-        {
-          subtitle: "Planification Préopératoire",
-          items: [
-            "Choix du Type de Prothèse : En fonction de l'étendue des lésions, de l'âge et du niveau d'activité du patient.",
-            "Dimensionnement des Implants : Mesures précises basées sur l'imagerie pour sélectionner la taille optimale des composants.",
-            "Planification Chirurgicale Assistée par Ordinateur : Pour les cas complexes ou lors de l'utilisation de guides de coupe personnalisés.",
-            "Optimisation de l'État de Santé : Correction des facteurs de risque modifiables (anémie, diabète déséquilibré, etc.).",
+            "Un bilan radiographique complet est réalisé permettant de confirmer le diagnostic et de prévoir la chirurgie.",
           ],
         },
       ],
     },
     treatments: {
-      title: "Types de Prothèses et Techniques Chirurgicales",
+      title: "Quel traitement ?",
       content: [
         {
-          subtitle: "Types de Prothèses",
+          subtitle: "Déroulement de l'intervention",
           items: [
-            "Prothèse Totale de Genou (PTG) : Remplace l'ensemble des surfaces articulaires (compartiments fémoro-tibial interne, externe et fémoro-patellaire).",
-            "Prothèse Unicompartimentale : Remplace uniquement un compartiment, généralement l'interne, préservant les structures saines.",
-            "Prothèse Fémoro-Patellaire : Dédiée au remplacement isolé de l'articulation entre la rotule et le fémur.",
-            "Prothèses à Haute Flexion : Conçues pour permettre une amplitude de flexion supérieure, adaptées aux patients souhaitant maintenir des activités nécessitant une flexion importante.",
-            "Prothèses de Révision : Implants spécifiques utilisés lors du remplacement d'une prothèse défaillante, offrant une stabilité accrue.",
-          ],
-        },
-        {
-          subtitle: "Techniques Chirurgicales",
-          items: [
-            "Approche Conventionnelle : Voie d'abord antérieure ou médiale avec exposition complète de l'articulation.",
-            "Chirurgie Mini-Invasive : Utilisation d'incisions réduites et de techniques spécifiques limitant les dommages musculaires.",
-            "Navigation Assistée par Ordinateur : Système de guidage informatisé permettant un positionnement précis des implants.",
-            "Chirurgie Robotique : Utilisation d'un bras robotisé pour exécuter les coupes osseuses avec une précision millimétrique.",
-            "Implantation Sur Mesure : Utilisation de guides de coupe personnalisés créés à partir des images scanner du patient pour un positionnement optimal des implants.",
-            "Balance Ligamentaire Informatisée : Mesure précise des tensions ligamentaires pour optimiser l'équilibre de l'articulation prothétique.",
-          ],
-        },
-        {
-          subtitle: "Matériaux et Innovations",
-          items: [
-            "Alliages Métalliques : Généralement en titane ou chrome-cobalt pour les composants fémoraux et tibiaux, offrant résistance et biocompatibilité.",
-            "Polyéthylène Hautement Réticulé : Matériau perfectionné pour l'insert tibial, offrant une résistance accrue à l'usure.",
-            "Céramique : Utilisée dans certains designs pour réduire la production de débris d'usure.",
-            "Revêtements Antibactériens : Innovation récente visant à réduire le risque d'infection prothétique.",
-            "Fixation Sans Ciment : Implants à surface poreuse permettant l'ostéointégration directe, particulièrement adaptés aux patients plus jeunes.",
+            "La chirurgie est réalisée sous anesthésie générale ou locorégionale.",
+            "Une cicatrice est réalisée à la face antérieure du genou, de taille adaptée selon les cas.",
+            "Les surfaces articulaires sont recoupées (fémur, tibia et parfois rotule) à l’aide d’une instrumentation chirurgicale spécialement développée pour la prothèse de genou.",
+            "La prothèse peut être fixée dans l’os par impaction (prothèse sans ciment) ou avec du ciment (prothèse cimentée) au libre choix de votre chirurgien.",
+            "A la fin de l’intervention, un drain est laissé permettant d’évacuer l’hématome.",
+            "Le drain sera enlevé sur prescription (en général un ou plusieurs jours).",
           ],
         },
       ],
     },
     recovery: {
-      title: "Récupération et Réhabilitation",
+      title: "Et après ?",
       content: [
         {
-          subtitle: "Phase Hospitalière",
+          subtitle: "Premiers jours après l'intervention",
           items: [
-            "Gestion de la Douleur : Protocole multimodal comprenant analgésiques, cryothérapie et techniques d'anesthésie locale.",
-            "Mobilisation Précoce : Mise en charge et mobilisation assistée généralement dès le jour de l'intervention ou le lendemain.",
-            "Exercices Initiaux : Programme supervisé par un kinésithérapeute incluant contractions isométriques, flexion/extension du genou et exercices de proprioception.",
-            "Éducation du Patient : Formation aux précautions post-opératoires, à l'utilisation des aides à la marche et à la détection des signes de complications.",
+            "Le lever et l’appui sur le membre sont autorisés dès le lendemain, sauf avis contraire du chirurgien.",
+            "Le genou est placé dans une machine de rééducation permettant la flexion-extension automatique.",
+            "La flexion peut être limitée dans certains cas par le chirurgien.",
+            "Afin d’éviter les phlébites, un traitement anticoagulant est prescrit pendant plusieurs semaines. Des bas de contentions peuvent être utilisés également.",
           ],
         },
         {
-          subtitle: "Rééducation Ambulatoire",
+          subtitle: "Retour à domicile et suivi",
           items: [
-            "Programme Progressif : Intensification graduelle des exercices sur 6 à 12 semaines post-opératoires.",
-            "Renforcement Musculaire : Focus sur les quadriceps, ischio-jambiers et muscles stabilisateurs de la hanche.",
-            "Travail Proprioceptif : Exercices spécifiques pour améliorer l'équilibre et le contrôle neuromusculaire.",
-            "Récupération Fonctionnelle : Réapprentissage des activités quotidiennes avec adaptation aux spécificités de la prothèse.",
-            "Gestion des Œdèmes : Techniques de drainage et conseils pour limiter le gonflement post-opératoire.",
+            "Après quelques jours d’hospitalisation, votre chirurgien autorisera votre sortie avec les ordonnances de soins nécessaires (pansement, antalgiques, anticoagulants, kinésithérapie).",
+            "Vous serez revu en consultation avec des radiographies.",
+            "La rééducation doit être poursuivie impérativement, avec un kinésithérapeute ou en centre de rééducation.",
           ],
         },
         {
-          subtitle: "Suivi à Long Terme",
+          subtitle: "Reprise des activités et retour à l'autonomie",
           items: [
-            "Consultations Régulières : Évaluation clinique et radiologique à intervalles définis (3 mois, 1 an, puis tous les 2-5 ans).",
-            "Maintenance de la Prothèse : Conseils pour maximiser la longévité de l'implant.",
-            "Ajustements d'Activité : Recommandations personnalisées concernant le sport et les activités physiques.",
-            "Surveillance des Complications Tardives : Vigilance concernant l'usure, le descellement ou l'infection prothétique.",
+            "La marche est protégée par des béquilles pendant environ 30 jours, après cela vous pourrez reprendre la conduite et votre activité́ professionnelle.",
+            "Ces délais sont variables et sont donnes à titre indicatif et seront confirmés lors de la consultation avec votre chirurgien.",
           ],
         },
       ],
     },
-    prevention: {
-      title: "Vie avec une Prothèse de Genou",
-      items: [
-        "Maintenir un poids de forme pour réduire les contraintes sur la prothèse et optimiser sa longévité.",
-        "Pratiquer des activités physiques adaptées comme la natation, le vélo ou la marche, en évitant les sports à impact élevé.",
-        "Porter des chaussures adaptées offrant un bon amorti et un soutien adéquat.",
-        "Éviter les positions prolongées à genoux et les accroupissements profonds qui peuvent augmenter l'usure des composants.",
-        "Suivre les recommandations d'antibioprophylaxie lors de certaines procédures médicales ou dentaires pour prévenir les infections hématogènes.",
-        "Rester attentif aux signes d'alerte comme une douleur nouvelle, un gonflement persistant ou des bruits anormaux lors des mouvements.",
-        "Maintenir une musculature forte autour du genou pour optimiser la stabilité et la fonction de l'articulation prothétique.",
-        "Informer systématiquement les professionnels de santé de la présence d'une prothèse, notamment avant tout examen d'imagerie.",
+    complications: {
+      title: "Complications Potentielles",
+      content: [
+        {
+          subtitle: "Les plus fréquentes",
+          items: [
+            "La phlébite peut survenir en dépit du traitement anticoagulant. Il s’agit d’un caillot qui se forme dans les veines des jambes, celui-ci pouvant migrer et entrainer une embolie pulmonaire.",
+            "Comme toute chirurgie, il existe un risque d’hématome qui se résorbe en règle générale tout seul. Il peut exceptionnellement nécessiter une ponction évacuatrice ou un drainage chirurgical.",
+            "La cicatrisation des tissus dans le genou peut créer des adhérences qui vont limiter la flexion et entrainer une certaine raideur. Si cela se produit dans les semaines qui suivent l’opération, une mobilisation du genou sous anesthésie pour libérer les adhérences peut être proposée.",
+          ],
+        },
+        {
+          subtitle: "Plus rarement",
+          items: [
+            "L’algodystrophie est un phénomène douloureux et inflammatoire encore mal compris. Elle est traitée médicalement et peut durer plusieurs mois (voire parfois des années), entrainant une prise en charge spécifique avec rééducation adaptée, bilans complémentaires et parfois, une prise en charge spécifique de la douleur. Elle est imprévisible dans sa survenue comme dans son évolution et ses séquelles potentielles.",
+            "L’infection est une complication rare mais grave. Elle peut survenir même très longtemps après la chirurgie et peut provenir d’une infection à distance du genou, comme une infection dentaire ou urinaire. Une infection sur la prothèse peut conduire à une nouvelle chirurgie. Il faudra donc surveiller attentivement, traiter les infections toute votre vie et prendre soin de votre peau en évitant toute plaie qui constituerait une porte d’entrée pour les bactéries. Il vous est fortement déconseillé de fumer pendant la période de cicatrisation, le tabagisme augmentant de manière significative le taux d’infection.",
+            "La liste n’est pas exhaustive et une complication particulièrement exceptionnelle peut survenir, liée à l’état local ou à une variabilité technique. Toutes les complications ne peuvent être précisées, ce que vous avez compris et accepté.",
+          ],
+        },
       ],
     },
     results: {
-      title: "Résultats et Perspectives",
+      title: "Les résultats à espérer",
       content: [
         {
-          subtitle: "Bénéfices Attendus",
+          subtitle: "Résultats et Perspectives",
           items: [
-            "Soulagement de la Douleur : Amélioration significative pour plus de 90% des patients dans les activités quotidiennes.",
-            "Récupération Fonctionnelle : Restauration d'une amplitude articulaire généralement comprise entre 0° et 120-130° de flexion.",
-            "Durabilité des Implants : Taux de survie supérieur à 90% à 15 ans pour les prothèses modernes.",
-            "Amélioration de la Qualité de Vie : Impact positif sur l'autonomie, le sommeil et la participation sociale.",
+            "Les meilleurs résultats sont observés après un délai d’au moins 6 mois.",
+            "L’amélioration peut se poursuivre pendant les deux années postopératoires.",
+            "Le résultat attendu est une marche sans canne indolore pour un périmètre de marche de 5km.",
+            "La flexion optimale à atteindre est de 120° mais peut nettement varier selon les cas et la flexion préopératoire. ",
+            "La conduite automobile est reprise après 1 mois.",
+            "Les activités professionnelles sont généralement reprises après 2 à 3 mois (très variable en fonction de la profession et des cas).",
+            "Les activités physiques sont autorisées après plusieurs mois.",
+            "Elles dépendent du niveau physique du patient et sont à valider avec votre chirurgien.",
+            "La durée de vie d’une prothèse totale de genou est actuellement de 15 ans minimum en l’absence de complication. Toutefois une usure prématurée ou un descellement d’une des pièces peut parfois survenir dans des délais moindres.",
           ],
         },
+      ],
+    },
+    conclusion: {
+      title: "En résumé",
+      content: [
         {
-          subtitle: "Limites et Considérations",
+          subtitle: "Synthèse",
           items: [
-            "Sensations Proprioceptives : Malgré les améliorations techniques, le genou prothétique ne reproduit pas parfaitement les sensations naturelles.",
-            "Restrictions d'Activité : Certaines activités à fort impact ou impliquant des torsions importantes restent déconseillées.",
-            "Durée de Vie Limitée : Possibilité de révision nécessaire après 15-20 ans, particulièrement chez les patients jeunes et actifs.",
-            "Résultats Variables : Les facteurs individuels comme l'âge, le poids, les comorbidités et la motivation influencent significativement les résultats.",
-          ],
-        },
-        {
-          subtitle: "Innovations et Avenir",
-          items: [
-            "Prothèses Intelligentes : Développement d'implants équipés de capteurs pour le suivi post-opératoire et l'évaluation de l'usure.",
-            "Matériaux Biomimétiques : Recherche sur des matériaux reproduisant plus fidèlement les propriétés mécaniques des tissus naturels.",
-            "Médecine Régénérative : Exploration des thérapies cellulaires et de la bio-ingénierie comme alternatives aux prothèses conventionnelles.",
-            "Intelligence Artificielle : Utilisation des algorithmes prédictifs pour optimiser la sélection des patients et le positionnement des implants.",
+            "La prothèse totale de genou est un geste chirurgical fréquent en orthopédie.",
+            "C’est un geste néanmoins éprouvant et il nécessite une rééducation de plusieurs mois.",
+            "Les meilleurs résultats sont obtenus après 6 mois, voire un ou deux ans.",
+            "En l’absence de complication, la prothèse totale de genou apporte une amélioration significative sur les douleurs et la fonction.",
           ],
         },
       ],

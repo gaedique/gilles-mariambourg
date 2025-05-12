@@ -80,7 +80,10 @@ const Hero = () => {
                 Appeler
               </CtaButton>
               <CtaButton
-                href={contact.details.doctolib || "https://www.doctolib.fr"}
+                href={
+                  contact.details.doctolib ||
+                  "https://www.doctolib.fr/chirurgien-orthopediste/castres/gilles-mariambourg-castres"
+                }
                 external
                 variant="dark"
                 className="w-full sm:w-auto"
