@@ -84,7 +84,6 @@ export default function SurgerySection() {
                     <SurgeryDescription
                       surgery={activeSurgery}
                       ctaText={surgeryData.ctaText}
-                      ctaLink={surgeryData.ctaLink}
                     />
                   )}
                 </article>
