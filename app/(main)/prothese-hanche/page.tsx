@@ -86,7 +86,7 @@ const HipPage = () => {
       {/* Hero Section */}
       <MedicalHero
         data={hipIntroduction}
-        imageSrc="/images/hip-prothesis.png"
+        imageSrc="/images/hip-prothesis_desktop.webp"
         imageAlt="Prothèse de la hanche"
       />
 

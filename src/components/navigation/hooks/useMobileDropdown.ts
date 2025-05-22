@@ -12,7 +12,7 @@ export const useMobileDropdown = (options: UseMobileDropdownOptions = {}) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(initialState);
 
   // Create properly typed refs for potential DOM references
-  const dropdownRef = useRef<HTMLDivElement>(null);
+  const dropdownRef = useRef<HTMLUListElement>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
 
   // Toggle function for dropdown state
@@ -51,7 +51,7 @@ export const useMobileDropdown = (options: UseMobileDropdownOptions = {}) => {
     closeDropdown,
     openDropdown,
     handleKeyDown,
-    dropdownRef: dropdownRef as RefObject<HTMLDivElement>,
+    dropdownRef: dropdownRef as RefObject<HTMLUListElement>,
     triggerRef: triggerRef as RefObject<HTMLButtonElement>,
   };
 };

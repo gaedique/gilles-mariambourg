@@ -86,7 +86,7 @@ const KneePage = () => {
       {/* Hero Section */}
       <MedicalHero
         data={kneeIntroduction}
-        imageSrc="/images/knee-prothesis.png"
+        imageSrc="/images/knee-prothesis_desktop.webp"
         imageAlt="Prothèse du genou"
       />
 

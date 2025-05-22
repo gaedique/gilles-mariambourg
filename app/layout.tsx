@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Manrope, Nunito_Sans, Overpass } from "next/font/google";
 
 import "@/src/styles/globals.css";
+import { ScrollResetter } from "@/src/utils/ScrollResetter";
 
 import { cn } from "@/src/utils/cn";
 
@@ -24,6 +25,9 @@ const accentFont = Overpass({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL || "https://www.dr-gilles-mariambourg.fr"
+  ),
   title: {
     default: "Gilles Mariambourg - Chirurgien Orthopédique",
     template: "%s | Dr. Gilles Mariambourg",
@@ -33,7 +37,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "fr_FR",
-    url: "https://www.gillesmariambourg.fr/",
+    url: "https://www.dr-gilles-mariambourg.fr/",
     siteName: "Dr. Gilles Mariambourg - Chirurgien Orthopédique",
     images: [
       {
@@ -61,6 +65,7 @@ export default function RootLayout({
           "min-h-full text-primary font-body"
         )}
       >
+        <ScrollResetter />
         {/* <div className="w-full mx-auto  space-y-16 md:space-y-24 lg:space-y-32"> */}
         <div className="min-h-screen w-full mx-auto space-y-16 md:space-y-24 lg:space-y-32 relative ">
           {children}

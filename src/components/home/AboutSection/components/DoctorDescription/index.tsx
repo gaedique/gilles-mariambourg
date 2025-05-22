@@ -12,7 +12,7 @@ const DoctorDescription = ({
   aboutData,
 }: DoctorDescriptionProps) => (
   <article
-    className="col-span-1 md:col-span-5 md:col-start-8 flex flex-col justify-center space-y-6 sm:space-y-8 md:space-y-16"
+    className="flex flex-col justify-center space-y-6 sm:space-y-8 md:space-y-12"
     aria-label={`Biographie du ${doctorInfo.fullName}`}
     itemProp="description"
   >

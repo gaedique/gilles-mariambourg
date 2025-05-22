@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect, useCallback } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 interface UseHeaderScrollReturn {
   isScrolled: boolean;
@@ -9,8 +9,8 @@ interface UseHeaderScrollReturn {
 }
 
 export const useHeaderScroll = (
-  scrollThreshold: number = 10,
-  closeMenuOnScroll: boolean = true
+  scrollThreshold: number = 10
+  // closeMenuOnScroll: boolean = true
 ): UseHeaderScrollReturn => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -24,10 +24,10 @@ export const useHeaderScroll = (
     setIsScrolled(currentScrollPos > scrollThreshold);
 
     // Optionally close mobile menu when scrolling
-    if (closeMenuOnScroll && isMobileMenuOpen && currentScrollPos > 50) {
-      setIsMobileMenuOpen(false);
-    }
-  }, [scrollThreshold, closeMenuOnScroll, isMobileMenuOpen]);
+    // if (closeMenuOnScroll && isMobileMenuOpen && currentScrollPos > 50) {
+    //   setIsMobileMenuOpen(false);
+    // }
+  }, [scrollThreshold]);
 
   // Update body overflow based on mobile menu state
   useEffect(() => {

@@ -134,7 +134,7 @@ export const contact = {
   hours: {
     regular: {
       days: "Lundi - Vendredi",
-      time: "8:00 - 19:00",
+      time: "8:30 - 18:00",
     },
     consultation: {
       days: "Mercredi et vendredi",
@@ -368,7 +368,8 @@ export const aboutSection = {
   ],
   ctaText: "En savoir plus",
   ctaLink: "/dr-mariambourg",
-  imageSrc: "/images/gilles_bureau.png",
+  imageSrc: "/images/gilles-bureau_desktop.webp",
+  landscapeImageSrc: "/images/gilles-bureau_tablet.webp",
   imageAlt: "Dr. Mariambourg",
 };
 
@@ -386,7 +387,7 @@ export const surgerySection = {
         { top: "51%", left: "77%", size: "small" },
         { top: "65%", left: "79%", size: "small" },
       ],
-      slug: "colonne-vertebrale",
+      url: "/colonne-vertebrale",
     },
     {
       id: "hanche",
@@ -394,15 +395,15 @@ export const surgerySection = {
       description:
         "La chirurgie de prothèse de hanche permet de remplacer l'articulation endommagée par une prothèse artificielle, réduisant la douleur et restaurant la mobilité pour une meilleure qualité de vie.",
       points: [{ top: "87%", left: "63%", size: "large" }],
-      slug: "prothese-de-hanche",
+      url: "/prothese-hanche",
     },
     {
       id: "genou",
       title: "Prothèse du genou",
       description:
         "La chirurgie de prothèse du genou vise à remplacer l'articulation usée par une prothèse adaptée, permettant de retrouver une mobilité optimale et de supprimer les douleurs liées à l'arthrose.",
-      points: [{ top: "80%", left: "9%", size: "medium" }],
-      slug: "prothese-du-genou",
+      points: [{ top: "82%", left: "14%", size: "small" }],
+      url: "/prothese-genou",
     },
   ],
   imageSrc: "/images/expertise_highlight.webp",

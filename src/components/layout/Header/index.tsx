@@ -5,8 +5,8 @@ import { contact, doctor, meta } from "@/src/data/siteData";
 import { useEffect, useState } from "react";
 import { useDesktopDropdown } from "../../navigation/hooks/useDesktopDropdown";
 import { useHeaderScroll } from "../../navigation/hooks/useHeaderScroll";
-import { Logo } from "./Logo";
 import MobileMenuButton from "../../navigation/MobileMenuButton";
+import { Logo } from "./Logo";
 
 const Header = () => {
   const { isScrolled, isMobileMenuOpen, setIsMobileMenuOpen } =
