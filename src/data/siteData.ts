@@ -409,7 +409,6 @@ export const surgerySection = {
   imageSrc: "/images/expertise_highlight.webp",
   imageAlt: "Illustration chirurgie orthopédique",
   ctaText: "En savoir plus",
-  ctaLink: "/expertise",
 };
 
 // Export the complete site data object
