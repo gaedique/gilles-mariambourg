@@ -102,7 +102,6 @@ const Hero = () => {
             <ImageCarousel
               specialties={specialties}
               currentSpecialty={currentSpecialty}
-              setcurrentSpecialty={setcurrentSpecialty}
               isScrolled={isScrolled}
               scrollProgress={scrollProgress}
               aria-live="polite"

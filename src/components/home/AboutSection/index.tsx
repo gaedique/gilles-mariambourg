@@ -70,24 +70,46 @@ const About = ({ className = "" }: AboutProps) => {
 
               {/* Content with semantic HTML */}
               <div className="relative px-6 py-8 md:p-10 lg:p-12">
+                {/* Desktop layout - Image (portrait) on left, text on right */}
                 <div
-                  className="grid grid-cols-1 gap-8 md:grid-cols-12 md:gap-12 lg:gap-24"
+                  className="hidden lg:grid lg:grid-cols-12 lg:gap-16 lg:items-center"
                   itemScope
                   itemType="https://schema.org/Person"
                 >
-                  {/* Doctor Image */}
-                  <div className="col-span-1 md:col-span-5">
+                  <div className="lg:col-span-5 lg:col-start-1 self-center">
                     <DoctorImage
                       aboutData={aboutData}
                       doctorInfo={doctorInfo}
                     />
                   </div>
 
-                  {/* Doctor Description - no animation */}
-                  <DoctorDescription
-                    aboutData={aboutData}
-                    doctorInfo={doctorInfo}
-                  />
+                  <div className="lg:col-span-5 lg:col-start-8 self-center">
+                    <DoctorDescription
+                      aboutData={aboutData}
+                      doctorInfo={doctorInfo}
+                    />
+                  </div>
+                </div>
+
+                {/* Mobile/Tablet layout - Text on top, Image (landscape) below */}
+                <div
+                  className="grid grid-cols-1 gap-8 lg:hidden"
+                  itemScope
+                  itemType="https://schema.org/Person"
+                >
+                  <div className="self-center">
+                    <DoctorDescription
+                      aboutData={aboutData}
+                      doctorInfo={doctorInfo}
+                    />
+                  </div>
+
+                  <div className="self-center">
+                    <DoctorImage
+                      aboutData={aboutData}
+                      doctorInfo={doctorInfo}
+                    />
+                  </div>
                 </div>
               </div>
             </div>

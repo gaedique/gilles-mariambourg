@@ -5,5 +5,4 @@ export interface ImageCarouselProps {
   currentSpecialty: number;
   isScrolled: boolean;
   scrollProgress: number;
-  setcurrentSpecialty: (index: number) => void;
 }

@@ -72,14 +72,12 @@ const DesktopNav = ({
                 )}
               </button>
             ) : (
-              <div className="group" itemProp="url">
-                <NavLink href={item.path} className="relative group">
-                  <span className="text-sm font-medium" itemProp="name">
-                    {item.label}
-                  </span>
-                  <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-brand-bay-of-many-600 scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
-                </NavLink>
-              </div>
+              <NavLink href={item.path} className="relative group">
+                <span className="text-sm font-medium" itemProp="name">
+                  {item.label}
+                </span>
+                <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-brand-bay-of-many-600 scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
+              </NavLink>
             )}
           </li>
         ))}

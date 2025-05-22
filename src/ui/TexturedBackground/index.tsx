@@ -8,7 +8,7 @@ const TexturedBackground = ({
   baseTo = "to-slate-100/40",
   spotOneColor = "bg-blue-200/30",
   spotTwoColor = "bg-teal-100/20",
-  noiseUrl = "/textures/grid-texture.jpg",
+  noiseUrl = "/textures/grid-texture.webp",
   noiseOpacity = 40,
   noiseContrast = 120,
   flipX = false,
@@ -43,7 +43,7 @@ const TexturedBackground = ({
         ></div>
 
         {/* Higher contrast noise */}
-        <div
+        {/* <div
           className="absolute inset-0 mix-blend-soft-light"
           style={{
             backgroundImage: `url(${noiseUrl})`,
@@ -51,7 +51,7 @@ const TexturedBackground = ({
             filter: `contrast(${noiseContrast}%)`,
             opacity: noiseOpacity / 100,
           }}
-        ></div>
+        ></div> */}
         {/* Light shadow overlay to add depth */}
         <div className="absolute inset-0 shadow-inner pointer-events-none"></div>
       </div>

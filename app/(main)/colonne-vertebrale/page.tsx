@@ -87,7 +87,7 @@ const SpinePage = () => {
       {/* Hero Section */}
       <MedicalHero
         data={spineIntroduction}
-        imageSrc="/images/spine.png"
+        imageSrc="/images/rachis.webp"
         imageAlt="chirurgie du rachis"
       />
 

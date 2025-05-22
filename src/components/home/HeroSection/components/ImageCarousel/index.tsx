@@ -1,15 +1,13 @@
+import { useWindowSize } from "@/src/utils/clientOnly";
 import Image from "next/image";
 import { useEffect, useMemo, useState } from "react";
 import { ImageCarouselProps } from "./types";
-import { useWindowSize } from "@/src/utils/clientOnly";
 
 export const ImageCarousel = ({
   specialties,
   currentSpecialty,
   isScrolled,
   scrollProgress,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  setcurrentSpecialty,
   ...otherProps
 }: ImageCarouselProps) => {
   // State to track current screen size
@@ -78,7 +76,8 @@ export const ImageCarousel = ({
               src={getResponsiveImage(specialty)}
               alt={`${specialty.title} - Dr. Gilles Mariambourg, Chirurgien Orthopédiste à Castres - ${specialty.image.alt}`}
               fill
-              priority={index === 0}
+              // Utiliser priority uniquement pour l'image actuellement affichée
+              priority={index === currentSpecialty}
               placeholder={specialty.image.blurDataURL ? "blur" : "empty"}
               blurDataURL={specialty.image.blurDataURL}
               className={`object-cover object-center transition-transform duration-1000 ease-out ${
