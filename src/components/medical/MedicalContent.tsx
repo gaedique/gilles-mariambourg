@@ -20,7 +20,13 @@ interface MedicalContentProps {
 
 const MedicalContent = ({ data, sectionRefs }: MedicalContentProps) => {
   return (
-    <article className="col-span-12 lg:col-span-8 pb-24">
+    <article
+      className="col-span-12 lg:col-span-8 pb-24"
+      aria-labelledby="main-article-heading"
+    >
+      <h2 id="main-article-heading" className="sr-only">
+        Guide complet de la chirurgie du rachis
+      </h2>
       {Object.entries(data).map(([key, section]) => (
         <motion.section
           ref={sectionRefs[key]}
@@ -57,21 +63,6 @@ const MedicalContent = ({ data, sectionRefs }: MedicalContentProps) => {
                     />
                   </div>
 
-                  {/* <div className="absolute inset-0">
-                    <TexturedBackground
-                      className="absolute inset-0"
-                      baseFrom="from-emerald-100/60"
-                      baseVia="via-brand-bay-of-many-100/30"
-                      baseTo="to-teal-100/20"
-                      spotOneColor="bg-teal-100/50"
-                      spotTwoColor="bg-emerald-100/20"
-                      noiseOpacity={70}
-                      noiseContrast={110}
-                      flipX={idx % 2 === 0} // Alternate flip direction for variety
-                      flipY={idx % 3 === 0} // Add more variation
-                    />
-                  </div> */}
-
                   <div className="relative z-10">
                     <h4 className="text-xl font-medium font-heading text-slate-800">
                       {category.subtitle}
@@ -102,19 +93,6 @@ const MedicalContent = ({ data, sectionRefs }: MedicalContentProps) => {
                   noiseContrast={120}
                 />
               </div>
-
-              {/* <div className="absolute inset-0">
-                <TexturedBackground
-                  className="absolute inset-0"
-                  baseFrom="from-teal-100/60"
-                  baseVia="via-brand-bay-of-many-100/30"
-                  baseTo="to-emerald-100/20"
-                  spotOneColor="bg-teal-100/30"
-                  spotTwoColor="bg-emerald-100/20"
-                  noiseOpacity={30}
-                  noiseContrast={120}
-                />
-              </div> */}
 
               <ul className="space-y-4 text-slate-600 font-body relative z-10">
                 {section.items.map((item, idx) => (

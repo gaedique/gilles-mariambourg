@@ -24,12 +24,12 @@ const KneePage = () => {
   const sectionRefs = useMemo(() => {
     // Create the references for each section in kneeData
     const refs = Object.keys(kneeData).reduce((acc, key) => {
-      acc[key] = createRef<HTMLElement>();
+      acc[key] = createRef<HTMLDivElement>();
       return acc;
-    }, {} as Record<string, RefObject<HTMLElement | null>>);
+    }, {} as Record<string, RefObject<HTMLDivElement | null>>);
 
     // Adding a ref for the downloads section
-    refs["downloads"] = createRef<HTMLElement>();
+    refs["downloads"] = createRef<HTMLDivElement>();
     return refs;
   }, [kneeData]);
 
@@ -91,38 +91,36 @@ const KneePage = () => {
       />
 
       {/* Content Section */}
-      <section className="max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-12 gap-8">
-          {/* Navigation Sidebar */}
-          <MedicalSidebar
-            title="Prothèse du genou"
-            data={kneeData}
-            activeSection={activeSection}
-            scrollToSection={scrollToSection}
-            isScrolled={isScrolled}
-          />
+      <div className="max-w-7xl mx-auto px-6 grid grid-cols-12 gap-8">
+        {/* Navigation Sidebar */}
+        <MedicalSidebar
+          title="Prothèse du genou"
+          data={kneeData}
+          activeSection={activeSection}
+          scrollToSection={scrollToSection}
+          isScrolled={isScrolled}
+        />
 
-          {/* Fine line separator for visual distinction */}
-          <div className="hidden lg:block lg:col-span-1 relative">
-            <div className="absolute top-0 bottom-0 left-1/2 w-px bg-slate-200 transform -translate-x-1/2"></div>
-          </div>
+        {/* Fine line separator for visual distinction */}
+        <div className="hidden lg:block lg:col-span-1 relative">
+          <div className="absolute top-0 bottom-0 left-1/2 w-px bg-slate-200 transform -translate-x-1/2"></div>
+        </div>
 
-          {/* Main Content */}
-          <div className="col-span-12 lg:col-span-8 pb-24">
-            {/* Main Knee Content */}
-            <MedicalContent data={kneeData} sectionRefs={sectionRefs} />
+        {/* Main Content */}
+        <div className="col-span-12 lg:col-span-8 pb-24">
+          {/* Main Knee Content */}
+          <MedicalContent data={kneeData} sectionRefs={sectionRefs} />
 
-            {/* Downloadable Resources */}
-            <section ref={sectionRefs["downloads"]} data-section="downloads">
-              <DownloadSection
-                title={kneeDownloads.title}
-                subtitle={kneeDownloads.subtitle}
-                downloads={kneeDownloads.downloads}
-              />
-            </section>
+          {/* Downloadable Resources */}
+          <div ref={sectionRefs["downloads"]} data-section="downloads">
+            <DownloadSection
+              title={kneeDownloads.title}
+              subtitle={kneeDownloads.subtitle}
+              downloads={kneeDownloads.downloads}
+            />
           </div>
         </div>
-      </section>
+      </div>
     </Layout>
   );
 };

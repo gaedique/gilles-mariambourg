@@ -50,7 +50,11 @@ const DesktopNav = ({
                 onKeyDown={handleKeyDown}
                 aria-haspopup="true"
                 aria-expanded={isExpertiseDropdownOpen}
-                aria-controls="expertise-dropdown-menu"
+                aria-controls={
+                  isExpertiseDropdownOpen
+                    ? "expertise-dropdown-menu"
+                    : undefined
+                }
               >
                 <span itemProp="name">{item.label}</span>
                 <ChevronDown

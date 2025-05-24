@@ -33,7 +33,7 @@ const Footer = () => {
       <div style={{ height: footerHeight }} />
 
       {/* Actual footer with fixed positioning */}
-      <div
+      <footer
         ref={footerRef}
         className="fixed bottom-0 left-0 w-full bg-brand-bay-of-many-950 text-white"
         aria-label="Informations de contact et navigation du site"
@@ -46,7 +46,7 @@ const Footer = () => {
           </div>
           <BottomBar />
         </div>
-      </div>
+      </footer>
     </>
   );
 };

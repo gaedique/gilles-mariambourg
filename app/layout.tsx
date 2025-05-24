@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     siteName: "Dr. Gilles Mariambourg - Chirurgien Orthopédique",
     images: [
       {
-        url: "/images/og-image.jpg", // Replace with your actual image path
+        url: "/images/gilles-bureau_tablet.webp",
         width: 1200,
         height: 630,
         alt: "Dr. Gilles Mariambourg - Chirurgien Orthopédique à Castres",

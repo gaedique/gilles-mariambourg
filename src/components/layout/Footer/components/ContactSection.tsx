@@ -25,7 +25,7 @@ const ContactSection = () => (
         className="w-full sm:w-auto"
         aria-label="Appeler le cabinet"
       >
-        <span itemProp="telephone">{contact.details.phone}</span>
+        {contact.details.phone}
       </CtaButton>
     </div>
   </section>

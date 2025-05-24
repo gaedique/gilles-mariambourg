@@ -10,10 +10,7 @@ export const SurgeryDescription = ({
       <h4 className="text-base font-heading font-bold sm:text-lg leading-relaxed text-justify mb-3">
         {surgery.title}
       </h4>
-      <p
-        className="text-sm sm:text-base text-secondary leading-relaxed text-justify mb-6"
-        itemProp="description"
-      >
+      <p className="text-sm sm:text-base text-secondary leading-relaxed text-justify mb-6">
         {surgery.description}
       </p>
       {surgery.url && (

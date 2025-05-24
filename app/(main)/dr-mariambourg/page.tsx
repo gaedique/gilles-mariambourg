@@ -78,28 +78,26 @@ const AboutPage = () => {
       <DoctorHero biography={biography} />
 
       {/* Content Section */}
-      <section className="max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-12 gap-8">
-          {/* Navigation Sidebar */}
-          <DoctorSidebar
-            biographieData={biographieData}
-            activeSection={activeSection}
-            scrollToSection={scrollToSection}
-            isScrolled={isScrolled}
-          />
+      <div className="max-w-7xl mx-auto px-6 grid grid-cols-12 gap-8">
+        {/* Navigation Sidebar */}
+        <DoctorSidebar
+          biographieData={biographieData}
+          activeSection={activeSection}
+          scrollToSection={scrollToSection}
+          isScrolled={isScrolled}
+        />
 
-          {/* Fine line separator for visual distinction */}
-          <div className="hidden lg:block lg:col-span-1 relative">
-            <div className="absolute top-0 bottom-0 left-1/2 w-px bg-slate-200 transform -translate-x-1/2"></div>
-          </div>
-
-          {/* Main Content */}
-          <DoctorContent
-            biographieData={biographieData}
-            sectionRefs={sectionRefs}
-          />
+        {/* Fine line separator for visual distinction */}
+        <div className="hidden lg:block lg:col-span-1 relative">
+          <div className="absolute top-0 bottom-0 left-1/2 w-px bg-slate-200 transform -translate-x-1/2"></div>
         </div>
-      </section>
+
+        {/* Main Content */}
+        <DoctorContent
+          biographieData={biographieData}
+          sectionRefs={sectionRefs}
+        />
+      </div>
     </Layout>
   );
 };

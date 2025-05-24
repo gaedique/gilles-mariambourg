@@ -10,7 +10,7 @@ const DoctorHero = ({ biography }: DoctorHeroProps) => {
   return (
     <section
       className="flex flex-col justify-center min-h-[calc(100vh-var(--navbar-height)-48px)]"
-      aria-labelledby="hero-heading"
+      aria-labelledby="doctor-hero-heading"
       role="banner"
     >
       {/* SEO enhancing metadata */}
@@ -76,15 +76,15 @@ const DoctorHero = ({ biography }: DoctorHeroProps) => {
                 <div className="col-span-1 md:col-span-7 md:col-start-7 flex flex-col justify-center">
                   {/* Title - Clean professional approach */}
                   <div className="mb-8">
-                    <h2 className="text-sm font-medium font-heading uppercase tracking-wider text-brand-bay-of-many-600 mb-3">
+                    <p className="text-sm font-medium font-heading uppercase tracking-wider text-brand-bay-of-many-600 mb-3">
                       Votre Chirurgien
-                    </h2>
-                    <h1
-                      id="hero-heading"
+                    </p>
+                    <h2
+                      id="doctor-hero-heading"
                       className="text-3xl md:text-4xl lg:text-5xl font-bold font-heading text-slate-800"
                     >
                       Dr. Mariambourg
-                    </h1>
+                    </h2>
                     <div className="w-16 h-1 bg-brand-bay-of-many-600 mt-4"></div>
                   </div>
 

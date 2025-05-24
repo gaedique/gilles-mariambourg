@@ -6,7 +6,6 @@ import ScrollReveal from "@/src/ui/ScrollReveal";
 import TexturedBackground from "@/src/ui/TexturedBackground";
 import { useHasMounted, useWindowSize } from "@/src/utils/clientOnly";
 import { Phone } from "lucide-react";
-import { HeroHeading } from "./components/HeroHeading";
 import { ImageCarousel } from "./components/ImageCarousel";
 import { SpecialtyLabel } from "./components/SpecialtyLabel";
 import { SpecialtyWaypoints } from "./components/Waypoints";
@@ -30,7 +29,6 @@ const Hero = () => {
   return (
     <section
       className="container-full h-svh min-h-[40rem] px-4 pb-4 pt-[calc(var(--navbar-height)+32px)] lg:pt-[calc(var(--navbar-height)+48px)]"
-      aria-labelledby="hero-heading"
       role="banner"
     >
       {/* SEO enhancing metadata added as data attributes for client components */}
@@ -55,14 +53,20 @@ const Hero = () => {
 
         <ScrollReveal threshold={0.1} duration={1250}>
           {/* Main content */}
-          <article className="relative pt-12 md:pt-16 px-4 sm:px-8">
-            {/* Pass required props to HeroHeading */}
-            <HeroHeading
-              id="hero-heading"
-              doctorName={doctor.shortName}
-              doctorTitle={doctor.title}
-              doctorLocation="Castres, France"
-            />
+          <div className="relative pt-12 md:pt-16 px-4 sm:px-8">
+            <div className="text-center">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-heading font-bold mb-6 sm:mb-8">
+                {doctor.shortName}
+              </h1>
+              <div className="space-y-2">
+                <p className="text-sm md:text-xl lg:text-2xl text-secondary font-accent font-light">
+                  {doctor.title}
+                </p>
+                <p className="text-xs uppercase tracking-widest text-muted font-accent font-light">
+                  Castres, France
+                </p>
+              </div>
+            </div>
 
             {/* Cta buttons */}
             <div
@@ -92,7 +96,7 @@ const Hero = () => {
                 DOCTOLIB
               </CtaButton>
             </div>
-          </article>
+          </div>
         </ScrollReveal>
 
         {/* Image area */}
