@@ -272,6 +272,51 @@ export const consultationInfo = [
   },
 ];
 
+// export const expertiseDetails = {
+//   rachis: {
+//     title: "Chirurgie du rachis",
+//     items: [
+//       "Hernies discales cervicales et lombaires, arthrose cervicale",
+//       "Prothèses de disque lombaire",
+//       "Chirurgie mini-invasive (endoscopie) pour hernies discales, canal lombaire étroit et spondylolisthésis",
+//       "Chirurgie des fractures et tassements vertébraux",
+//       "Chirurgie tumorale de la colonne",
+//     ],
+//     innovation: {
+//       title: "Endoscopie Biportale Rachidienne",
+//       subtitle: "Une révolution chirurgicale",
+//       description:
+//         "L'endoscopie biportale rachidienne est une technique chirurgicale mini-invasive qui permet de traiter diverses pathologies de la colonne vertébrale avec une précision accrue et des suites opératoires simplifiées.",
+//       videoUrl: "https://youtu.be/uyDBTpAIHpE?si=WEYRDN2Uut_QwBl0",
+//       videoTitle:
+//         "Démonstration de l'endoscopie biportale rachidienne par Dr. Mariambourg",
+//       benefits: [
+//         "Moins de douleur post-opératoire",
+//         "Récupération plus rapide",
+//         "Cicatrices minimales (incisions de 7-8mm)",
+//         "Réduction du risque d'infection",
+//         "Visualisation améliorée pour le chirurgien",
+//         "Réduction du séjour hospitalier",
+//       ],
+//       thumbnailUrl: "/images/gilles-thumbnail_tablet.webp",
+//       thumbnailAlt:
+//         "Démonstration de la technique d'endoscopie biportale rachidienne - Une approche chirurgicale mini-invasive",
+//       metaDescription:
+//         "Découvrez l'endoscopie biportale rachidienne, une technique chirurgicale mini-invasive révolutionnaire pour le traitement des pathologies de la colonne vertébrale pratiquée par Dr. Mariambourg à Castres.",
+//       learnMoreUrl: "/endoscopie-biportale-rachidienne",
+//     },
+//   },
+//   hanche: {
+//     title: "Prothèse de hanche",
+//     items: ["Pose de prothèses de hanche par voie mini-invasive"],
+//   },
+//   genou: {
+//     title: "Prothèse de genou",
+//     items: [
+//       "Prothèses de genou personnalisées grâce à la modélisation informatique",
+//     ],
+//   },
+// };
 export const expertiseDetails = {
   rachis: {
     title: "Chirurgie du rachis",
@@ -298,7 +343,7 @@ export const expertiseDetails = {
         "Visualisation améliorée pour le chirurgien",
         "Réduction du séjour hospitalier",
       ],
-      thumbnailUrl: "/images/gilles_thumbnail.jpg",
+      thumbnailUrl: "/images/gilles-thumbnail_tablet.webp",
       thumbnailAlt:
         "Démonstration de la technique d'endoscopie biportale rachidienne - Une approche chirurgicale mini-invasive",
       metaDescription:
@@ -336,24 +381,37 @@ export const meta = {
 };
 
 // Update news section content
+// export const newsSection = {
+//   title: "Actualité",
+//   subtitle: "Une révolution chirurgicale",
+//   description:
+//     "L'endoscopie biportale rachidienne est une technique mini-invasive de pointe permettant de traiter les pathologies de la colonne vertébrale.",
+//   videoUrl: "https://youtu.be/uyDBTpAIHpE?si=WEYRDN2Uut_QwBl0",
+//   benefits: [
+//     "Moins de douleur post-opératoire",
+//     "Récupération plus rapide",
+//     "Cicatrices minimales",
+//   ],
+//   ctaText: "Découvrir",
+//   ctaLink:
+//     "https://www.elsan.care/fr/presse/la-polyclinique-du-sidobre-revolutionne-la-chirurgie-du-dos-avec-lendoscopie-biportale",
+//   ctaVideo: "Regarder la vidéo",
+//   thumbnailUrl: "/images/gilles-thumbnail_tablet.webp",
+//   metaDescription:
+//     "Découvrez l'endoscopie biportale rachidienne, une technique chirurgicale mini-invasive révolutionnaire pour le traitement des pathologies de la colonne vertébrale.",
+// };
 export const newsSection = {
   title: "Actualité",
-  subtitle: "Une révolution chirurgicale",
-  description:
-    "L'endoscopie biportale rachidienne est une technique mini-invasive de pointe permettant de traiter les pathologies de la colonne vertébrale.",
-  videoUrl: "https://youtu.be/uyDBTpAIHpE?si=WEYRDN2Uut_QwBl0",
-  benefits: [
-    "Moins de douleur post-opératoire",
-    "Récupération plus rapide",
-    "Cicatrices minimales",
-  ],
+  subtitle: expertiseDetails.rachis.innovation.subtitle,
+  description: expertiseDetails.rachis.innovation.description,
+  videoUrl: expertiseDetails.rachis.innovation.videoUrl,
+  benefits: expertiseDetails.rachis.innovation.benefits.slice(0, 3),
   ctaText: "Découvrir",
   ctaLink:
     "https://www.elsan.care/fr/presse/la-polyclinique-du-sidobre-revolutionne-la-chirurgie-du-dos-avec-lendoscopie-biportale",
   ctaVideo: "Regarder la vidéo",
-  thumbnailUrl: "/images/gilles_thumbnail.jpg",
-  metaDescription:
-    "Découvrez l'endoscopie biportale rachidienne, une technique chirurgicale mini-invasive révolutionnaire pour le traitement des pathologies de la colonne vertébrale.",
+  thumbnailUrl: expertiseDetails.rachis.innovation.thumbnailUrl,
+  metaDescription: expertiseDetails.rachis.innovation.metaDescription,
 };
 
 //Export about section content
