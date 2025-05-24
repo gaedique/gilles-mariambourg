@@ -21,15 +21,15 @@ const LegalNotice = () => {
         </CtaButton>
       </div>
 
-      <h1 className="text-3xl font-bold text-gray-900 mb-8 border-b-2 border-blue-500 pb-4">
+      <h2 className="text-3xl font-bold text-gray-900 mb-8 border-b-2 border-blue-500 pb-4">
         Mentions Légales
-      </h1>
+      </h2>
 
       <div className="space-y-6">
         <section>
-          <h2 className="text-2xl font-semibold text-gray-800 mb-4">
+          <h3 className="text-2xl font-semibold text-gray-800 mb-4">
             1. Informations Légales
-          </h2>
+          </h3>
           <div className="bg-gray-50 p-4 rounded-lg shadow-sm">
             <p className="mb-2">
               <strong>Responsable de la publication</strong> : {doctor.fullName}
@@ -67,9 +67,9 @@ const LegalNotice = () => {
         </section>
 
         <section>
-          <h2 className="text-2xl font-semibold text-gray-800 mb-4">
+          <h3 className="text-2xl font-semibold text-gray-800 mb-4">
             2. Hébergement du Site
-          </h2>
+          </h3>
           <div className="bg-gray-50 p-4 rounded-lg shadow-sm">
             <p className="mb-4">
               Le site est hébergé par : Vercel Inc.
@@ -91,9 +91,9 @@ const LegalNotice = () => {
         </section>
 
         <section>
-          <h2 className="text-2xl font-semibold text-gray-800 mb-4">
+          <h3 className="text-2xl font-semibold text-gray-800 mb-4">
             3. Nom de domaine
-          </h2>
+          </h3>
           <div className="bg-gray-50 p-4 rounded-lg shadow-sm">
             <p className="mb-4">
               Le nom de domaine est enregistré chez : OVH SAS
@@ -115,9 +115,9 @@ const LegalNotice = () => {
         </section>
 
         <section>
-          <h2 className="text-2xl font-semibold text-gray-800 mb-4">
+          <h3 className="text-2xl font-semibold text-gray-800 mb-4">
             4. Propriété Intellectuelle
-          </h2>
+          </h3>
           <p className="mb-4">
             L&apos;ensemble des contenus présents sur ce site (textes, images,
             vidéos, graphismes, logos) est protégé par le droit d&apos;auteur et
@@ -133,9 +133,9 @@ const LegalNotice = () => {
         </section>
 
         <section>
-          <h2 className="text-2xl font-semibold text-gray-800 mb-4">
+          <h3 className="text-2xl font-semibold text-gray-800 mb-4">
             5. Droit applicable
-          </h2>
+          </h3>
           <p>
             Les présentes mentions légales sont soumises au droit français. En
             cas de litige, les tribunaux français seront seuls compétents.
@@ -143,9 +143,9 @@ const LegalNotice = () => {
         </section>
 
         <section>
-          <h2 className="text-2xl font-semibold text-gray-800 mb-4">
+          <h3 className="text-2xl font-semibold text-gray-800 mb-4">
             6. Responsabilité
-          </h2>
+          </h3>
           <p>
             Les informations fournies sur ce site ont une vocation exclusivement
             informative et ne remplacent en aucun cas une consultation médicale.
@@ -156,9 +156,9 @@ const LegalNotice = () => {
         </section>
 
         <section>
-          <h2 className="text-2xl font-semibold text-gray-800 mb-4">
+          <h3 className="text-2xl font-semibold text-gray-800 mb-4">
             7. Données Personnelles et Confidentialité
-          </h2>
+          </h3>
           <p className="mb-4">
             Le site peut collecter des données personnelles via des formulaires
             de contact. Ces données sont exclusivement destinées à la
@@ -176,9 +176,9 @@ const LegalNotice = () => {
         </section>
 
         <section>
-          <h2 className="text-2xl font-semibold text-gray-800 mb-4">
+          <h3 className="text-2xl font-semibold text-gray-800 mb-4">
             8. Cookies et technologies similaires
-          </h2>
+          </h3>
           <p className="mb-3">
             À l&apos;heure actuelle, ce site n&apos;utilise pas de cookies
             marketing ou publicitaires. Seuls les cookies techniques essentiels
@@ -194,9 +194,9 @@ const LegalNotice = () => {
         </section>
 
         <section>
-          <h2 className="text-2xl font-semibold text-gray-800 mb-4">
+          <h3 className="text-2xl font-semibold text-gray-800 mb-4">
             9. Respect de la Déontologie Médicale
-          </h2>
+          </h3>
           <p className="mb-4">
             Le {doctor.fullName} s&apos;engage à respecter le Code de
             Déontologie Médicale.
@@ -212,9 +212,9 @@ const LegalNotice = () => {
         </section>
 
         <section>
-          <h2 className="text-2xl font-semibold text-gray-800 mb-4">
+          <h3 className="text-2xl font-semibold text-gray-800 mb-4">
             10. Contact
-          </h2>
+          </h3>
           <p className="mb-4">
             Pour toute question relative aux mentions légales ou à
             l&apos;utilisation du site, vous pouvez nous contacter :

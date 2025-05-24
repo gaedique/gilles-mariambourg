@@ -1,12 +1,19 @@
-import { motion } from "framer-motion";
 import TexturedBackground from "@/src/ui/TexturedBackground";
+import { motion } from "framer-motion";
 import { ContentItem, DoctorContentProps } from "./types";
 
 // Define proper types for the content structure
 
 const DoctorContent = ({ biographieData, sectionRefs }: DoctorContentProps) => {
   return (
-    <article className="col-span-12 lg:col-span-8 pb-24">
+    <article
+      className="col-span-12 lg:col-span-8 pb-24"
+      aria-labelledby="doctor-content-heading"
+    >
+      <h2 id="doctor-content-heading" className="sr-only">
+        Biographie et parcours du Dr. Mariambourg
+      </h2>
+
       {Object.entries(biographieData).map(([key, section]) => (
         <motion.section
           ref={sectionRefs[key]}

@@ -15,10 +15,14 @@ const DownloadSection = ({
   return (
     <motion.section
       className="mb-24 scroll-mt-32"
+      aria-labelledby="downloads-heading"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: true, margin: "-20%" }}
     >
+      <h2 id="downloads-heading" className="sr-only">
+        Téléchargements et ressources
+      </h2>
       <h3 className="text-2xl font-semibold font-heading text-brand-bay-of-many-600 uppercase tracking-wide mb-6">
         {title}
       </h3>
@@ -67,9 +71,10 @@ const DownloadSection = ({
               <a
                 href={`/fiches-info/${item.fileName}`}
                 download
+                aria-label={`Télécharger ${item.title} en PDF`}
                 className="inline-flex items-center justify-center gap-2 bg-brand-bay-of-many-600 hover:bg-brand-bay-of-many-700 text-white font-medium py-3 px-4 rounded-md transition-colors duration-200 mt-auto self-start"
               >
-                <ArrowDown size={18} />
+                <ArrowDown size={18} aria-hidden="true" />
                 <span>Télécharger le PDF</span>
               </a>
             </div>

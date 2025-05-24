@@ -64,7 +64,7 @@ const MobileNav = ({
       )}
 
       {/* Menu */}
-      <aside
+      <div
         className={`fixed left-0 right-0 bg-white shadow-xl transform transition-all duration-300 ease-in-out ${
           isMobileMenuOpen
             ? "translate-y-0 opacity-100"
@@ -123,7 +123,9 @@ const MobileNav = ({
                         onClick={toggleDropdown}
                         className="flex items-center gap-2 text-base hover:text-brand-bay-of-many-600 transition-colors w-full text-left"
                         aria-expanded={isDropdownOpen}
-                        aria-controls={expertiseMenuId}
+                        aria-controls={
+                          isDropdownOpen ? expertiseMenuId : undefined
+                        }
                         aria-haspopup="true"
                       >
                         <span itemProp="name">{item.label}</span>
@@ -185,7 +187,7 @@ const MobileNav = ({
             </ul>
           </nav>
         </div>
-      </aside>
+      </div>
     </>
   );
 };

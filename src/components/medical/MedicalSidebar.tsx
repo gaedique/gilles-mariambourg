@@ -84,7 +84,7 @@ const MedicalSidebar = ({
                   >
                     <span className="flex items-center gap-2 text-sm uppercase tracking-wider font-accent">
                       <FileText className="w-4 h-4 text-brand-bay-of-many-600" />
-                      Fiche d&apos;Information
+                      Fiches d&apos;Informations
                     </span>
                   </button>
                 </>

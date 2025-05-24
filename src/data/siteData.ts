@@ -298,7 +298,7 @@ export const expertiseDetails = {
         "Visualisation améliorée pour le chirurgien",
         "Réduction du séjour hospitalier",
       ],
-      thumbnailUrl: "/images/gilles_thumbnail.jpg",
+      thumbnailUrl: "/images/gilles-thumbnail_tablet.webp",
       thumbnailAlt:
         "Démonstration de la technique d'endoscopie biportale rachidienne - Une approche chirurgicale mini-invasive",
       metaDescription:

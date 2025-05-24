@@ -65,7 +65,6 @@ const Header = () => {
       className={`fixed top-4 left-0 w-full z-50 transition-all duration-300 ${
         isScrolled ? "bg-white/95 backdrop-blur-sm shadow-sm" : "bg-transparent"
       }`}
-      role="banner"
       aria-label="Site header"
       itemScope
       itemType="https://schema.org/WPHeader"

@@ -21,15 +21,15 @@ const PrivacyPolicy = () => {
         </CtaButton>
       </div>
 
-      <h1 className="text-3xl font-bold text-gray-900 mb-8 border-b-2 border-blue-500 pb-4">
+      <h2 className="text-3xl font-bold text-gray-900 mb-8 border-b-2 border-blue-500 pb-4">
         Politique de Confidentialité
-      </h1>
+      </h2>
 
       <div className="space-y-6">
         <section>
-          <h2 className="text-2xl font-semibold text-gray-800 mb-4">
+          <h3 className="text-2xl font-semibold text-gray-800 mb-4">
             Nature de ce Site Web
-          </h2>
+          </h3>
           <div className="bg-blue-50 p-6 rounded-lg border-l-4 border-blue-500">
             <p className="text-lg mb-4">
               Ce site web est <strong>purement informatif</strong>. Aucune
@@ -44,9 +44,9 @@ const PrivacyPolicy = () => {
         </section>
 
         <section>
-          <h2 className="text-2xl font-semibold text-gray-800 mb-4">
+          <h3 className="text-2xl font-semibold text-gray-800 mb-4">
             Contact et Prise de Rendez-vous
-          </h2>
+          </h3>
           <p className="mb-4">
             Pour nous contacter ou prendre rendez-vous, deux options
             s&apos;offrent à vous :
@@ -103,9 +103,9 @@ const PrivacyPolicy = () => {
         </section>
 
         <section>
-          <h2 className="text-2xl font-semibold text-gray-800 mb-4">
+          <h3 className="text-2xl font-semibold text-gray-800 mb-4">
             Données Techniques
-          </h2>
+          </h3>
           <p className="mb-4">Ce site web :</p>
           <ul className="list-disc list-inside space-y-2 text-gray-700">
             <li>N&apos;utilise pas de cookies marketing ou publicitaires</li>
@@ -120,9 +120,9 @@ const PrivacyPolicy = () => {
         </section>
 
         <section>
-          <h2 className="text-2xl font-semibold text-gray-800 mb-4">
+          <h3 className="text-2xl font-semibold text-gray-800 mb-4">
             Responsable du Site
-          </h2>
+          </h3>
           <div className="bg-gray-50 p-4 rounded-lg">
             <p className="mb-2">
               <strong>Nom :</strong> {doctor.fullName}
@@ -142,9 +142,9 @@ const PrivacyPolicy = () => {
         </section>
 
         <section>
-          <h2 className="text-2xl font-semibold text-gray-800 mb-4">
+          <h3 className="text-2xl font-semibold text-gray-800 mb-4">
             Évolutions Futures
-          </h2>
+          </h3>
           <p>
             Si ce site web venait à intégrer des fonctionnalités de collecte de
             données (formulaires de contact, système de rendez-vous intégré,

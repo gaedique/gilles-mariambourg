@@ -69,7 +69,6 @@ export const ImageCarousel = ({
             index === currentSpecialty ? "opacity-100" : "opacity-0"
           } ${scaleClass} transition-transform duration-100 ease-out`}
           data-specialty={specialty.title}
-          itemProp="about"
         >
           <div className="relative w-full h-full">
             <Image

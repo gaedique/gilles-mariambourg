@@ -5,9 +5,8 @@ const BottomBar = () => (
   <div className="mt-8 sm:mt-12 lg:mt-16 pt-6 sm:pt-8 border-t border-brand-bay-of-many-800">
     <div className="flex flex-col sm:flex-row justify-between items-center gap-4 sm:gap-6 text-xs sm:text-sm text-brand-bay-of-many-300">
       <p className="text-center sm:text-left">
-        © <span itemProp="copyrightYear">{new Date().getFullYear()}</span>{" "}
-        <span itemProp="copyrightHolder">{doctor.fullName}</span>. Tous droits
-        réservés.
+        © <span>{new Date().getFullYear()}</span> <span>{doctor.fullName}</span>
+        . Tous droits réservés.
       </p>
       <div className="flex gap-4 sm:gap-6">
         {navigation.legal.map((item) => (
